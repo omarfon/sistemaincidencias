@@ -12,7 +12,7 @@ import { CabeceraComponent } from './share/cabecera/cabecera.component';
 import { NewIncidentComponent } from './modals/new-incident/new-incident.component';
 import { SidebarComponent } from './share/sidebar/sidebar.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatDialogModule } from '@angular/material';
+import { MatDatepickerModule, MatDialogModule, MatExpansionModule, MatFormFieldModule, MatIconModule, MatInputModule } from '@angular/material';
 
 
 
@@ -31,7 +31,12 @@ import { MatDialogModule } from '@angular/material';
     BrowserModule,
     APP_ROUTING,
     BrowserAnimationsModule,
-    MatDialogModule
+    MatDialogModule,
+    MatExpansionModule,
+    MatInputModule,
+    MatIconModule,
+    MatDatepickerModule,
+    MatFormFieldModule
   ],
   providers: [],
   bootstrap: [AppComponent],
