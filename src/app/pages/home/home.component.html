@@ -103,12 +103,38 @@
             </div>
         </div>
     </div>
-    <div class="container">
+    <div class="container-fluid">
         <div class="row">
             <div class="col-12">
-                <mat-accordion class="example-headers-align" multi>
-                    <div class='card cardissue'>
+                <mat-accordion class="example-headers-align" multi *ngIf='incidencias'>
+                  <div class='card cardissue' *ngFor='let i of incidencias'>
                         <div class='card-body'>
+                          <div class="row">
+                            <div class="col-1">
+                              <p class='tituloUno'>ID</p>
+                          </div>
+                          <div class="col-2">
+                              <p class='tituloUno'>{{i.data.message | slice:0:20}}...</p>
+                          </div>
+                          <div class="col-2">
+                              <p class='tituloUno'>REQUERIDO POR</p>
+                          </div>
+                          <div class="col-2">
+                              <p class='tituloUno'>{{i.data.tecnic}}</p>
+                          </div>
+                          <div class="col-2">
+                              <p class='tituloUno'>{{i.data.category}}</p>
+                          </div>
+                          <div class="col-1">
+                              <p class='tituloUno'>{{i.data.date.seconds}}</p>
+                          </div>
+                          <div class="col-1">
+                              <p class='tituloUno'>{{i.data.hour}}</p>
+                          </div>
+                          <div class="col-1">
+                              <p class='tituloUno'>{{i.data.status}}</p>
+                          </div>
+                          </div>
                             <mat-expansion-panel>
                               <mat-expansion-panel-header>
                                 <mat-panel-title>

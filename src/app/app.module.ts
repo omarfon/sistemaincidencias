@@ -14,7 +14,10 @@ import { SidebarComponent } from './share/sidebar/sidebar.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatDatepickerModule, MatDialogModule, MatExpansionModule, MatFormFieldModule, MatIconModule, MatInputModule } from '@angular/material';
 
-
+import { AngularFireModule } from '@angular/fire';
+import { environment } from 'src/environments/environment';
+import { AngularFirestoreModule } from '@angular/fire/firestore';
+import { AngularFireAuthModule } from '@angular/fire/auth';
 
 @NgModule({
   declarations: [
@@ -31,6 +34,9 @@ import { MatDatepickerModule, MatDialogModule, MatExpansionModule, MatFormFieldM
     BrowserModule,
     APP_ROUTING,
     BrowserAnimationsModule,
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFirestoreModule,
+    AngularFireAuthModule,
     MatDialogModule,
     MatExpansionModule,
     MatInputModule,
