@@ -1,4 +1,4 @@
-<div style='width: 900px;'>
+<div style='width: 1000px;'>
     <div class='containerTitle'>
         Nuevo Incidente
     </div>
@@ -22,7 +22,7 @@
                     <div class="form-group">
                         <div class="row">
                             <div class="col-3">
-                                <label for="">Impacto</label>
+                                <label for="">Impacto:</label>
                             </div>
                             <div class="col-9">
                                 <input type="text" class='form-control'>
@@ -47,7 +47,7 @@
                     <div class="form-group">
                         <div class="row">
                             <div class="col-3">
-                                <label for="">Urgencia</label>
+                                <label for="">Urgencia:</label>
                             </div>
                             <div class="col-9">
                                 <input type="text" class='form-control'>
@@ -59,7 +59,7 @@
                     <div class="form-group">
                         <div class="row">
                             <div class="col-3">
-                                <label for="">Tecnico</label>
+                                <label for="">Tecnico:</label>
                             </div>
                             <div class="col-9">
                                 <input type="text" class='form-control'>
@@ -71,7 +71,7 @@
                     <div class="form-group">
                         <div class="row">
                             <div class="col-3">
-                                <label for="">Prioridad</label>
+                                <label for="">Prioridad:</label>
                             </div>
                             <div class="col-9">
                                 <input type="text" class='form-control'>
@@ -83,7 +83,7 @@
                     <div class="form-group">
                         <div class="row">
                             <div class="col-3">
-                                <label for="">Categoria de servicio</label>
+                                <label for="">Categoria de servicio:</label>
                             </div>
                             <div class="col-9">
                                 <input type="text" class='form-control'>
@@ -95,7 +95,7 @@
                     <div class="form-group">
                         <div class="row">
                             <div class="col-3">
-                                <label for="">Categoria</label>
+                                <label for="">Categoria:</label>
                             </div>
                             <div class="col-9">
                                 <input type="text" class='form-control'>
@@ -107,7 +107,7 @@
                     <div class="form-group">
                         <div class="row">
                             <div class="col-3">
-                                <label for="">Fecha de vencimiento</label>
+                                <label for="">Fecha de vencimiento:</label>
                             </div>
                             <div class="col-9">
                                 <input type="text" class='form-control'>
@@ -119,7 +119,7 @@
                     <div class="form-group">
                         <div class="row">
                             <div class="col-3">
-                                <label for="">Subcategoria</label>
+                                <label for="">Subcategoria:</label>
                             </div>
                             <div class="col-9">
                                 <input type="text" class='form-control'>
@@ -131,7 +131,7 @@
                     <div class="form-group">
                         <div class="row">
                             <div class="col-3">
-                                <label for="">Hora de ultima actualizacion</label>
+                                <label for="">Hora de ultima actualizacion:</label>
                             </div>
                             <div class="col-9">
                                 <input type="text" class='form-control'>
@@ -143,13 +143,95 @@
                     <div class="form-group">
                         <div class="row">
                             <div class="col-3">
-                                <label for="">creado por</label>
+                                <label for="">Creado por:</label>
                             </div>
                             <div class="col-9">
                                 <input type="text" class='form-control'>
                             </div>
                         </div>
                     </div>
+                </div>
+                
+            </div>
+            <div class="row">
+                <div class="col">
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-3">
+                                <label for="">Adjuntar documento:</label>
+                            </div>
+                            <div class="col-9">
+                                <input type="file" class='form-control'>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-3">
+                                <label for="">Asunto:</label>
+                            </div>
+                            <div class="col-9">
+                                <input type="text" class='form-control'>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-3">
+                                <label for="">SLA:</label>
+                            </div>
+                            <div class="col-9">
+                                <input type="text" class='form-control'>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-3">
+                                <label for="">Fecha de creacion:</label>
+                            </div>
+                            <div class="col-9">
+                                <input type="text" class='form-control'>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-3">
+                                <label for="">Hora de vencimiento:</label>
+                            </div>
+                            <div class="col-9">
+                                <input type="text" class='form-control'>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-2">
+                                <label for="">Descripcion:</label>
+                            </div>
+                            <div class="col-10">
+                                <input type="text" class='form-control'>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    
+                </div>
+                <div class="col">
+                    <button class='btn btn-info btn-block' (click)='saveInicident()'>Agregar Solicitud</button>
+                </div>
+                <div class="col">
+                    <button class='btn btn-light btn-block' (click)='closeModal()'>Cancelar</button>
                 </div>
             </div>
          </div>
