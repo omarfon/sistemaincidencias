@@ -3,7 +3,7 @@
         Nuevo Incidente
     </div>
     <div class='container-fluid formulario'>
-        <div class="form">
+        <form [formGroup]="incidenteForm" (ngSubmit)="saveInicident()">
             <div class="row">
                 <div class="col-6">
                     <div class="form-group">
@@ -12,8 +12,13 @@
                                 <label for="">Tipo de solicitud:</label>
                             </div>
                             <div class='col-9'>
-                                <input type="text" class='form-control'>
-
+                                <select type="text" class='form-control'
+                                        formControlName="type">
+                                    <option value="null">Seleccionar tipo de solicitud</option>
+                                    <option value="incidente">Incidente</option>
+                                    <option value="requeimientoinfo">Requerimiento de info</option>
+                                    <option value="requirimientoservicio">Requerimiento de servicio</option>
+                                </select>
                             </div>
                         </div>
                     </div>
@@ -25,7 +30,48 @@
                                 <label for="">Impacto:</label>
                             </div>
                             <div class="col-9">
-                                <input type="text" class='form-control'>
+                                <select type="text" class='form-control'
+                                        formControlName="impact">
+                                    <option value="null">Selecciona  Impacto</option>
+                                    <option value="abierta">Afecta negocio</option>
+                                    <option value="abierta">Afecta Departamento</option>
+                                    <option value="abierta">Afecta Grupo</option>
+                                    <option value="abierta">Afecta a usuario</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-6">
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-3">
+                                <label for="">Modo:</label>
+                            </div>
+                            <div class='col-9'>
+                                <select type="text" class='form-control'
+                                        formControlName="mode">
+                                    <option value="null">Seleccionar modo</option>
+                                    <option value="incidente">Email</option>
+                                    <option value="requeimientoinfo">Telefono</option>
+                                    <option value="requirimientoservicio">Formulario web</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-6">
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-3">
+                                <label for="">Nombre solicitante:</label>
+                            </div>
+                            <div class="col-9">
+                                <select type="text" class='form-control'
+                                        formControlName="solicitante">
+                                    <option value="null">Selecciona  solicitante</option>
+                                    <option [ngValue]="u" *ngFor='let u of usuarios'>{{u.nombres}} {{u.apellido_p}}</option>
+                                </select>
                             </div>
                         </div>
                     </div>
@@ -37,7 +83,13 @@
                                 <label for="">Estado:</label>
                             </div>
                             <div class='col-9'>
-                                <input type="text" class='form-control'>
+                                <select type="text" class='form-control'
+                                        formControlName="state">
+                                    <option value="null">Selecciona estado</option>
+                                    <option value="abierta">Abierta</option>
+                                    <option value="cerrada">Cerrada</option>
+                                    <option value="cancelada">Cancelada</option>
+                                </select>
 
                             </div>
                         </div>
@@ -50,7 +102,14 @@
                                 <label for="">Urgencia:</label>
                             </div>
                             <div class="col-9">
-                                <input type="text" class='form-control'>
+                                <select type="text" class='form-control'
+                                        formControlName="urgency">
+                                    <option value="null">Selecciona Urgencia</option>
+                                    <option value="abierta">Alta</option>
+                                    <option value="abierta">Baja</option>
+                                    <option value="abierta">Normal</option>
+                                    <option value="abierta">Urgente</option>
+                                </select>
                             </div>
                         </div>
                     </div>
@@ -62,7 +121,12 @@
                                 <label for="">Tecnico:</label>
                             </div>
                             <div class="col-9">
-                                <input type="text" class='form-control'>
+                                <select type="text" class='form-control'
+                                        formControlName="tecnic"
+                                        [(ngModel)]="tecnico">
+                                    <option value="null">Selecciona Tecnico</option>
+                                <option [ngValue]="t" *ngFor='let t of tecnicos' >{{t.nombres}} {{t.apellidop}}</option>
+                                </select>
                             </div>
                         </div>
                     </div>
@@ -74,12 +138,19 @@
                                 <label for="">Prioridad:</label>
                             </div>
                             <div class="col-9">
-                                <input type="text" class='form-control'>
+                                <select type="text" class='form-control'
+                                        formControlName="priority">
+                                    <option value="null">Selecciona prioridad</option>
+                                    <option value="alta">Alta</option>
+                                    <option value="baja">Baja</option>
+                                    <option value="normal">Normal</option>
+                                    <option value="urgente">Urgente</option>
+                                </select>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="col-6">
+               <!--  <div class="col-6">
                     <div class="form-group">
                         <div class="row">
                             <div class="col-3">
@@ -90,7 +161,7 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> -->
                 <div class="col-6">
                     <div class="form-group">
                         <div class="row">
@@ -98,7 +169,11 @@
                                 <label for="">Categoria:</label>
                             </div>
                             <div class="col-9">
-                                <input type="text" class='form-control'>
+                                <select type=text class='form-control'
+                                        formControlName="category">
+                                <option value="null">Selecciona Categoria</option>
+                                <option [ngValue]="c" *ngFor='let c of categorias'>{{c.id}} </option>
+                               </select>
                             </div>
                         </div>
                     </div>
@@ -110,7 +185,7 @@
                                 <label for="">Fecha de vencimiento:</label>
                             </div>
                             <div class="col-9">
-                                <input type="text" class='form-control'>
+                                <input type="date" class='form-control' formControlName="datend">
                             </div>
                         </div>
                     </div>
@@ -122,7 +197,10 @@
                                 <label for="">Subcategoria:</label>
                             </div>
                             <div class="col-9">
-                                <input type="text" class='form-control'>
+                                <select type="text" class='form-control'
+                                        formControlName="subcategory">
+                                    <option value="Selecciona subcategoria"></option>
+                                </select>
                             </div>
                         </div>
                     </div>
@@ -134,19 +212,26 @@
                                 <label for="">Hora de ultima actualizacion:</label>
                             </div>
                             <div class="col-9">
-                                <input type="text" class='form-control'>
+                                <input type="hour" class='form-control'
+                                        formControlName="hour">
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="col-6">
-                    <div class="form-group">
+                     <div class="form-group">
                         <div class="row">
                             <div class="col-3">
-                                <label for="">Creado por:</label>
+                                <label for="">SLA:</label>
                             </div>
                             <div class="col-9">
-                                <input type="text" class='form-control'>
+                                <select type="text" class='form-control'>
+                                    <option disabled value="null">selecciona hora</option>
+                                    <option value="1">1 hora</option>
+                                    <option value="2">2 horas</option>
+                                    <option value="3">3 horas</option>
+                                    <option value="4">4 horas</option>
+                                </select>
                             </div>
                         </div>
                     </div>
@@ -161,7 +246,8 @@
                                 <label for="">Adjuntar documento:</label>
                             </div>
                             <div class="col-9">
-                                <input type="file" class='form-control'>
+                                <input type="file" class='form-control' 
+                                        formControlName="document">
                             </div>
                         </div>
                     </div>
@@ -171,7 +257,8 @@
                                 <label for="">Asunto:</label>
                             </div>
                             <div class="col-9">
-                                <input type="text" class='form-control'>
+                                <input type="text" class='form-control'
+                                        formControlName="affair">
                             </div>
                         </div>
                     </div>
@@ -180,20 +267,11 @@
                     <div class="form-group">
                         <div class="row">
                             <div class="col-3">
-                                <label for="">SLA:</label>
-                            </div>
-                            <div class="col-9">
-                                <input type="text" class='form-control'>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <div class="row">
-                            <div class="col-3">
                                 <label for="">Fecha de creacion:</label>
                             </div>
                             <div class="col-9">
-                                <input type="text" class='form-control'>
+                                <input type="date" class='form-control'
+                                formControlName="hourCreate">
                             </div>
                         </div>
                     </div>
@@ -203,7 +281,7 @@
                                 <label for="">Hora de vencimiento:</label>
                             </div>
                             <div class="col-9">
-                                <input type="text" class='form-control'>
+                                <input type="time" class='form-control'>
                             </div>
                         </div>
                     </div>
@@ -217,7 +295,8 @@
                                 <label for="">Descripcion:</label>
                             </div>
                             <div class="col-10">
-                                <input type="text" class='form-control'>
+                                <textarea type="text" class='form-control'
+                                formControlName="description"></textarea>
                             </div>
                         </div>
                     </div>
@@ -228,12 +307,12 @@
                     
                 </div>
                 <div class="col">
-                    <button class='btn btn-info btn-block' (click)='saveInicident()'>Agregar Solicitud</button>
+                    <button class='btn btn-info btn-block' type='submit'>Agregar Solicitud</button>
                 </div>
                 <div class="col">
                     <button class='btn btn-light btn-block' (click)='closeModal()'>Cancelar</button>
                 </div>
             </div>
-         </div>
+        </form>
     </div>
 </div>

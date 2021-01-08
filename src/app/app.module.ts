@@ -12,12 +12,17 @@ import { CabeceraComponent } from './share/cabecera/cabecera.component';
 import { NewIncidentComponent } from './modals/new-incident/new-incident.component';
 import { SidebarComponent } from './share/sidebar/sidebar.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatDatepickerModule, MatDialogModule, MatExpansionModule, MatFormFieldModule, MatIconModule, MatInputModule } from '@angular/material';
+import { MatDatepickerModule, MatDialogModule, MatExpansionModule, MatFormFieldModule, MatIconModule, MatInputModule, MatStepperModule } from '@angular/material';
 
 import { AngularFireModule } from '@angular/fire';
 import { environment } from 'src/environments/environment';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireAuthModule } from '@angular/fire/auth';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { SidebarsoluComponent } from './share/sidebarsolu/sidebarsolu.component';
+import { SidesolComponent } from './share/sidesol/sidesol.component';
+import { UserComponent } from './pages/user/user.component';
+import { CabeceraUserComponent } from './share/cabecera-user/cabecera-user.component';
 
 @NgModule({
   declarations: [
@@ -28,11 +33,17 @@ import { AngularFireAuthModule } from '@angular/fire/auth';
     InformesComponent,
     CabeceraComponent,
     NewIncidentComponent,
-    SidebarComponent
+    SidebarComponent,
+    SidebarsoluComponent,
+    SidesolComponent,
+    UserComponent,
+    CabeceraUserComponent
   ],
   imports: [
     BrowserModule,
     APP_ROUTING,
+    FormsModule,
+    ReactiveFormsModule,
     BrowserAnimationsModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule,
@@ -42,7 +53,8 @@ import { AngularFireAuthModule } from '@angular/fire/auth';
     MatInputModule,
     MatIconModule,
     MatDatepickerModule,
-    MatFormFieldModule
+    MatFormFieldModule,
+    MatStepperModule
   ],
   providers: [],
   bootstrap: [AppComponent],

@@ -14,4 +14,15 @@ export class IncidentsService {
     return this.afs.collection('incidencias').valueChanges();
   }
 
+  getAllIncidetsPerUser(){
+    const data = localStorage.getItem('datatecnic');
+    const user = JSON.parse(data);
+    return this.afs.collection('incidencias', ref => ref.where('data.tecnic.id', '==', user.id)).valueChanges();
+  }
+
+  getAllIncidents(){
+    const data = localStorage.getItem('datatecnic');
+    const user = JSON.parse(data);
+    return this.afs.collection('incidencias', ref => ref.where('data.solicitante.cod_user', '==', user.cod_user)).valueChanges();
+  }
 }

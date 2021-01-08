@@ -2,28 +2,35 @@
     <div class="login-box card">
         <div class="card-body">
             <h2>MESA DE AYUDA</h2>
-            <form class="form-horizontal form-material" id="loginform" action="index.html">
+            <form [formGroup]='formLogin' (ngSubmit)='login()' class="form-horizontal form-material" id="loginform">
                 <div class="form-group m-t-40">
-                    <div class="col-xs-12">
-                        <input class="form-control" type="text" required="" placeholder="Username">
+                    <div class="col-12">
+                        <input class="form-control" type="text" placeholder="Usuario"
+                            formControlName='user'>
                     </div>
                 </div>
                 <div class="form-group">
-                    <div class="col-xs-12">
-                        <input class="form-control" type="password" required="" placeholder="Password">
+                    <div class="col-12">
+                        <input class="form-control" type="password" placeholder="Contrasena"
+                                formControlName='password'>
                     </div>
                 </div>
-                <div class="form-group row">
+               <!--  <div class="form-group row">
                     <div class="col-md-12">
                         <div class="checkbox checkbox-primary pull-left p-t-0">
                             <input id="checkbox-signup" type="checkbox" class="filled-in chk-col-light-blue">
                             <label for="checkbox-signup">Recordar</label>
                         </div>
                  </div>
+                </div> -->
+                <div class="form-group text-center m-t-20">
+                    <div class="col-xs-12">
+                        <button class="btn btn-info btn-lg btn-block text-uppercase btn-rounded" type="submit">Tecnico</button>
+                    </div>
                 </div>
                 <div class="form-group text-center m-t-20">
                     <div class="col-xs-12">
-                        <button class="btn btn-info btn-lg btn-block text-uppercase btn-rounded" type="submit" (click)='goToHome()'>Log In</button>
+                        <button class="btn btn-warning btn-lg btn-block text-uppercase btn-rounded" (click)='loginUser()'>Usuario</button>
                     </div>
                 </div>
                <!--  <div class="row">
@@ -54,6 +61,7 @@
                         <button class="btn btn-primary btn-lg btn-block text-uppercase waves-effect waves-light" type="submit">Reset</button>
                     </div>
                 </div>
+
             </form>
         </div>
     </div>

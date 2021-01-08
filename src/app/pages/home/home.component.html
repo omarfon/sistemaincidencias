@@ -10,7 +10,7 @@
                     <div class="card-body">
                       <div class="d-flex">
                         <div class="stats">
-                          <h1 class="text-white">23</h1>
+                          <h2 class="text-white" *ngIf='incidencias'>{{incidencias.length}}</h2>
                           <h6 class="text-white">Total de tickets</h6>
                           <!-- <button class="btn btn-rounded btn-outline btn-light m-t-10 font-14"
                             (click)="goToCitasPendientes()">Revisar</button> -->
@@ -26,7 +26,7 @@
                     <div class="card-body">
                       <div class="d-flex">
                         <div class="stats">
-                          <h1 class="text-white">20</h1>
+                          <h2 class="text-white">20</h2>
                           <h6 class="text-white">Tickets categorizados</h6>
                           <!-- <button class="btn btn-rounded btn-outline btn-light m-t-10 font-14"
                             (click)="goToCitas()">Revisar</button> -->
@@ -42,7 +42,7 @@
                     <div class="card-body">
                       <div class="d-flex">
                         <div class="stats">
-                          <h1 class="text-white">3</h1>
+                          <h2 class="text-white">3</h2>
                           <h6 class="text-white">Tickets resueltos</h6>
                           <!-- <button class="btn btn-rounded btn-outline btn-light m-t-10 font-14">Revisar</button> -->
                         </div>
@@ -58,7 +58,7 @@
                       <div class="card-body">
                         <div class="d-flex">
                           <div class="stats">
-                            <h1 class="text-white">20</h1>
+                            <h2 class="text-white">20</h2>
                             <h6 class="text-white">Tickets pendientes</h6>
                             <!-- <button class="btn btn-rounded btn-outline btn-light m-t-10 font-14">Revisar</button> -->
                           </div>
@@ -111,40 +111,88 @@
                         <div class='card-body'>
                           <div class="row">
                             <div class="col-1">
-                              <p class='tituloUno'>ID</p>
-                          </div>
-                          <div class="col-2">
-                              <p class='tituloUno'>{{i.data.message | slice:0:20}}...</p>
-                          </div>
-                          <div class="col-2">
-                              <p class='tituloUno'>REQUERIDO POR</p>
-                          </div>
-                          <div class="col-2">
-                              <p class='tituloUno'>{{i.data.tecnic}}</p>
-                          </div>
-                          <div class="col-2">
-                              <p class='tituloUno'>{{i.data.category}}</p>
-                          </div>
-                          <div class="col-1">
                               <p class='tituloUno'>{{i.data.date.seconds}}</p>
                           </div>
-                          <div class="col-1">
-                              <p class='tituloUno'>{{i.data.hour}}</p>
+                          <div class="col-2">
+                              <p class='tituloUno'>{{i.data.description | slice:0:20}}...</p>
+                          </div>
+                          <div class="col-2">
+                              <p class='tituloUno'>{{i.data.solicitante.nombres}} {{i.data.solicitante.apellido_p}}</p>
+                          </div>
+                          <div class="col-2">
+                              <p class='tituloUno'>{{i.data.tecnic.nombres}} {{i.data.tecnic.apellidop}}</p>
+                          </div>
+                          <div class="col-2">
+                              <p class='tituloUno'>{{i.data.category.id}}</p>
                           </div>
                           <div class="col-1">
-                              <p class='tituloUno'>{{i.data.status}}</p>
+                              <p class='tituloUno'>{{i.data.datend | date:'shortDate'}}</p>
                           </div>
+                          <div class="col-1">
+                              <p class='tituloUno'>{{i.data.date.seconds | date:'shortTime'}}</p>
+                          </div>
+                          <div class="col-1" *ngIf='i.data.state == "abierta"'>
+                              <button class='btn btn-success btn-rounded btn-xs'>{{i.data.state}}</button>
+                          </div>
+                          <div class="col-1" *ngIf='i.data.state == "pendiente"'>
+                            <button class='btn btn-info btn-rounded btn-xs'>{{i.data.state}}</button>
+                        </div>
+                        <div class="col-1" *ngIf='i.data.state == "cerrada"'>
+                          <button class='btn btn-warning btn-rounded btn-xs'>{{i.data.state}}</button>
+                      </div>
                           </div>
                             <mat-expansion-panel>
                               <mat-expansion-panel-header>
-                                <mat-panel-title>
-                                  Personal data
-                                </mat-panel-title>
-                                <mat-panel-description>
-                                  Type your name and age
-                                  <mat-icon>account_circle</mat-icon>
-                                </mat-panel-description>
                               </mat-expansion-panel-header>
+                              <div class="row">
+                                <div class="col-8">
+                                  <mat-horizontal-stepper #stepper>
+                                    <mat-step label="Descripcion">
+                                      <p>{{i.data.description}}</p> 
+                                    </mat-step>
+                                    <mat-step label="Resolucion">
+                                     
+                                    </mat-step>
+                                    <mat-step label="Tareas">
+                                      <p>You are now done.</p>
+                                      <div>
+                                        <button mat-button matStepperPrevious>Back</button>
+                                        <button mat-button (click)="stepper.reset()">Reset</button>
+                                      </div>
+                                    </mat-step>
+                                  </mat-horizontal-stepper>
+                                </div>
+                                <div class="col-3 container-grey">
+                                  <div class="row">
+                                    <div class="col titulo">Estado</div>
+                                    <div class="col resultado">: {{i.data.state}}</div>
+                                  </div>
+                                  <div class="row">
+                                    <div class="col titulo">Prioridad</div>
+                                    <div class="col resultado">: {{i.data.priority}}</div>
+                                  </div>
+                                  <div class="row">
+                                    <div class="col titulo">Tecnico</div>
+                                    <div class="col resultado">: {{i.data.tecnic.nombres}} {{i.data.tecnic.apellidop}}</div>
+                                  </div>
+                                  <div class="row">
+                                    <div class="col titulo">Solicitante</div>
+                                    <div class="col resultado">: {{i.data.solicitante.nombres}} {{i.data.solicitante.apellido_p}}</div>
+                                  </div>
+                                  <div class="row">
+                                    <div class="col titulo">Puesto</div>
+                                    <div class="col resultado">: {{i.data.solicitante.puesto}}</div>
+                                  </div>
+                                  <div class='row'>
+                                    <div class="col titulo">Email</div>
+                                    <div class="col resultado">: {{i.data.solicitante.email}}</div>
+                                  </div>
+                                <div class='row'>
+                                  <div class="col titulo">Celular</div>
+                                  <div class="col resultado">: {{i.data.solicitante.cel}}</div>
+                                </div>
+                                </div>
+                              </div>
                             </mat-expansion-panel>        
                         </div>
                     </div>

@@ -7,7 +7,7 @@
       <!-- Logo -->
       <!-- ============================================================== -->
       <div class="navbar-header">
-        <a class="navbar-brand" [routerLink]="['/home']">
+        <a class="navbar-brand" [routerLink]="['/usuario']">
           <!-- Logo icon --><b>
             <!--You can put here icon as well // <i class="wi wi-sunset"></i> //-->
             <!-- Dark Logo icon -->
@@ -38,14 +38,14 @@
           <li class="nav-item hidden-sm-down"></li> -->
           <li class='nav-item'>
             <a class='nav-link' [routerLink]="['/soluciones']">
-              Soluciones
+              Mis incidencias
             </a>
           </li>
-          <li class='nav-item'>
+          <!-- <li class='nav-item'>
             <a href="#" class='nav-link' [routerLink]="['/informes']">
               Informes
             </a>
-          </li>
+          </li> -->
         </ul>
         <!-- ============================================================== -->
         <!-- User profile and search -->
@@ -125,7 +125,7 @@
                   <div class="dw-user-box">
                     <div class="u-img"><img src="../../../assets/images/avatar.png" alt="user"></div>
                     <div class="u-text" >
-                      <h4 *ngIf='tecnic'>{{tecnic.nombres }} {{tecnic.apellidop}}</h4>
+                      <h4 *ngIf='tecnic'>{{tecnic.nombres }} {{tecnic.apellido_p}}</h4>
                       <p class="text-muted">{{tecnic.email}}</p><a href="pages-profile.html"
                         class="btn btn-rounded btn-danger btn-sm">Ver Datos</a>
                     </div>
