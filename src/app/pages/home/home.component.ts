@@ -30,7 +30,7 @@ export class HomeComponent implements OnInit {
   getAllIncidents(){
     const data = localStorage.getItem('datatecnic');
     const user = JSON.parse(data)
-    if(user.id == '00'){
+    if(user.type == 'admin'){
     this.incidentSrv.getAllIncidets().subscribe(data =>{
       console.log(data)
         this.incidencias = data;

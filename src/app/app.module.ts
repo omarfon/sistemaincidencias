@@ -25,6 +25,9 @@ import { UserComponent } from './pages/user/user.component';
 import { CabeceraUserComponent } from './share/cabecera-user/cabecera-user.component';
 import { NewIncidentUserComponent } from './modals/new-incident-user/new-incident-user.component';
 import { SidebarUserComponent } from './share/sidebar-user/sidebar-user.component';
+import { ChartsModule, ThemeService } from 'ng2-charts';
+
+
 
 @NgModule({
   declarations: [
@@ -49,6 +52,7 @@ import { SidebarUserComponent } from './share/sidebar-user/sidebar-user.componen
     FormsModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,
+    ChartsModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule,
     AngularFireAuthModule,
@@ -61,7 +65,7 @@ import { SidebarUserComponent } from './share/sidebar-user/sidebar-user.componen
     MatProgressSpinnerModule,
     MatStepperModule
   ],
-  providers: [],
+  providers: [ThemeService],
   bootstrap: [AppComponent],
   entryComponents:[
     NewIncidentComponent,

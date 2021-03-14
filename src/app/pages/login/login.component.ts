@@ -43,7 +43,12 @@ export class LoginComponent implements OnInit {
     const datos = this.formLogin.value;
     this.authSrv.sigIn(datos.user, datos.password).then(resp =>{
       this.usuario = resp;
-      if(resp.user){
+      if(resp.type == 'user'){
+        localStorage.setItem('user',JSON.stringify(resp.user));
+        this.getDataUser();
+        this.router.navigate(['home']);
+        this.loading = false;
+      }else{
         localStorage.setItem('user',JSON.stringify(resp.user));
         this.getDataTecnic();
         this.router.navigate(['home']);
