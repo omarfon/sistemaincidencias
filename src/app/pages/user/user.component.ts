@@ -16,6 +16,7 @@ export class UserComponent implements OnInit {
   }
 
   getAllIncidents(){
+    this.incidents = localStorage.getItem('user');
     this.inciSrv.getAllIncidents().subscribe(data =>{
       this.incidents = data;
       console.log(this.incidents);

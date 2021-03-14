@@ -1,5 +1,9 @@
 <section id="wrapper" class="login-register login-sidebar" style="background-image:url(../../../assets/images/background/login-register.jpg);">
     <div class="login-box card">
+        <div *ngIf='loading == true' >
+            <mat-spinner class='spinnerClass'>
+            </mat-spinner>
+        </div>
         <div class="card-body">
             <h2>MESA DE AYUDA</h2>
             <form [formGroup]='formLogin' (ngSubmit)='login()' class="form-horizontal form-material" id="loginform">

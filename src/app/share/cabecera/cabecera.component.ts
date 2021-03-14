@@ -10,14 +10,13 @@ import { Router } from '@angular/router';
 export class CabeceraComponent implements OnInit {
   public tecnic;
   constructor(public router: Router) {
+   }
+
+  ngOnInit() {
     const storage = localStorage.getItem('datatecnic');
     if(storage){
       this.tecnic = JSON.parse(storage);
     }
-   }
-
-  ngOnInit() {
-
   }
 
   closeSesion(){

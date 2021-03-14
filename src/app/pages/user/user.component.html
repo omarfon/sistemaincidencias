@@ -1,3 +1,131 @@
 <app-cabecera-user></app-cabecera-user>
-<app-sidebar></app-sidebar>
-<p>user works!</p>
+<app-sidebar-user></app-sidebar-user>
+<div class='page-wrapper '>
+    <div class="container-fluid m-t-30">
+        <div class="row">
+            <div class="col-1">
+                <p class='titulo'>ID</p>
+            </div>
+            <div class="col-2">
+                <p class='titulo'>MENSAJE</p>
+            </div>
+            <div class="col-2">
+                <p class='titulo'>REQUERIDO POR</p>
+            </div>
+            <div class="col-2">
+                <p class='titulo'>ASIGNADO A</p>
+            </div>
+            <div class="col-2">
+                <p class='titulo'>CATEGORIZADO</p>
+            </div>
+            <div class="col-1">
+                <p class='titulo'>FECHA</p>
+            </div>
+            <div class="col-1">
+                <p class='titulo'>HORA</p>
+            </div>
+            <div class="col-1">
+                <p class='titulo'>STATUS</p>
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12" >
+                <mat-accordion class="example-headers-align" multi *ngIf='incidents'>
+                  <div class='card cardissue' *ngFor='let i of incidents'>
+                        <div class='card-body'>
+                          <div class="row">
+                            <div class="col-1">
+                              <p class='tituloUno'>{{i.data.date.seconds}}</p>
+                          </div>
+                          <div class="col-2">
+                              <p class='tituloUno'>{{i.data.description | slice:0:20}}...</p>
+                          </div>
+                          <div class="col-2">
+                              <p class='tituloUno'>{{i.data.solicitante.nombres}} {{i.data.solicitante.apellido_p}}</p>
+                          </div>
+                          <div class="col-2">
+                              <p class='tituloUno'>{{i.data.tecnic.nombres}} {{i.data.tecnic.apellidop}}</p>
+                          </div>
+                          <div class="col-2">
+                              <p class='tituloUno'>{{i.data.category.id}}</p>
+                          </div>
+                          <div class="col-1">
+                              <p class='tituloUno'>{{i.data.datend | date:'shortDate'}}</p>
+                          </div>
+                          <div class="col-1">
+                              <p class='tituloUno'>{{i.data.date.seconds | date:'shortTime'}}</p>
+                          </div>
+                          <div class="col-1" *ngIf='i.data.state == "abierta"'>
+                              <button class='btn btn-success btn-rounded btn-xs'>{{i.data.state}}</button>
+                          </div>
+                          <div class="col-1" *ngIf='i.data.state == "pendiente"'>
+                            <button class='btn btn-info btn-rounded btn-xs'>{{i.data.state}}</button>
+                        </div>
+                        <div class="col-1" *ngIf='i.data.state == "cerrada"'>
+                          <button class='btn btn-warning btn-rounded btn-xs'>{{i.data.state}}</button>
+                      </div>
+                          </div>
+                            <mat-expansion-panel>
+                              <mat-expansion-panel-header>
+                              </mat-expansion-panel-header>
+                              <div class="row">
+                                <div class="col-8">
+                                  <mat-horizontal-stepper #stepper>
+                                    <mat-step label="Descripcion">
+                                      <p>{{i.data.description}}</p> 
+                                    </mat-step>
+                                    <mat-step label="Resolucion">
+                                     
+                                    </mat-step>
+                                    <mat-step label="Tareas">
+                                      <p>You are now done.</p>
+                                      <div>
+                                        <button mat-button matStepperPrevious>Back</button>
+                                        <button mat-button (click)="stepper.reset()">Reset</button>
+                                      </div>
+                                    </mat-step>
+                                  </mat-horizontal-stepper>
+                                </div>
+                                <div class="col-3 container-grey">
+                                  <div class="row">
+                                    <div class="col titulo">Estado</div>
+                                    <div class="col resultado">: {{i.data.state}}</div>
+                                  </div>
+                                  <div class="row">
+                                    <div class="col titulo">Prioridad</div>
+                                    <div class="col resultado">: {{i.data.priority}}</div>
+                                  </div>
+                                  <div class="row">
+                                    <div class="col titulo">Tecnico</div>
+                                    <div class="col resultado">: {{i.data.tecnic.nombres}} {{i.data.tecnic.apellidop}}</div>
+                                  </div>
+                                <!--   <div class="row">
+                                    <div class="col titulo">Solicitante</div>
+                                    <div class="col resultado">: {{i.data.solicitante.nombres}} {{i.data.solicitante.apellido_p}}</div>
+                                  </div>
+                                  <div class="row">
+                                    <div class="col titulo">Puesto</div>
+                                    <div class="col resultado">: {{i.data.solicitante.puesto}}</div>
+                                  </div>
+                                  <div class='row'>
+                                    <div class="col titulo">Email</div>
+                                    <div class="col resultado">: {{i.data.solicitante.email}}</div>
+                                  </div>
+                                <div class='row'>
+                                  <div class="col titulo">Celular</div>
+                                  <div class="col resultado">: {{i.data.solicitante.cel}}</div>
+                                </div> -->
+                                </div>
+                              </div>
+                            </mat-expansion-panel>        
+                        </div>
+                    </div>
+                </mat-accordion>
+    
+            </div>
+        </div>
+    </div>
+
+</div>

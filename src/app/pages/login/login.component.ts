@@ -17,6 +17,7 @@ export class LoginComponent implements OnInit {
   public usuario;
   public datatecnic;
   public dataUser;
+  public loading: boolean = false;
 
   constructor(public router: Router,
               public authSrv: AuthService,
@@ -38,6 +39,7 @@ export class LoginComponent implements OnInit {
   }
 
   login(){
+    this.loading = true;
     const datos = this.formLogin.value;
     this.authSrv.sigIn(datos.user, datos.password).then(resp =>{
       this.usuario = resp;
@@ -46,6 +48,7 @@ export class LoginComponent implements OnInit {
         this.getDataTecnic();
         this.router.navigate(['home']);
         console.log(this.usuario);
+        this.loading = false;
       }
     }).catch(err =>{
       console.log(err);
@@ -74,7 +77,7 @@ export class LoginComponent implements OnInit {
       if(resp.user){
         localStorage.setItem('user', JSON.stringify(resp.user));
         this.getDataUser();
-        this.router.navigate(['usuario'])
+        this.router.navigate(['/usuario']) 
       }
     }).catch(err =>{
       console.log(err)

@@ -16,8 +16,12 @@ export class HomeComponent implements OnInit {
   public usuarios;
 
   constructor(public incidentSrv: IncidentsService,
-              public data: DatanormalService) { }
+              public data: DatanormalService) {
 
+                this.getAllIncidents();
+               }
+
+            
   ngOnInit() {
     console.log(this.tecnic);
     this.getAllIncidents();
@@ -28,12 +32,15 @@ export class HomeComponent implements OnInit {
     const user = JSON.parse(data)
     if(user.id == '00'){
     this.incidentSrv.getAllIncidets().subscribe(data =>{
+      console.log(data)
         this.incidencias = data;
       });
         console.log(this.incidencias)
       }else{
-        this.incidentSrv.getAllIncidetsPerUser().subscribe(data => {
-          this.incidencias = data
+        this.incidentSrv.getAllIncidetsPerUser().subscribe((data:any) => {
+          console.log(data)
+          this.incidencias = data.filter(x => x.data.state == "abierta")
+          console.log(this.incidencias)
         })
       }
   }

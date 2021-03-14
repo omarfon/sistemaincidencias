@@ -1,0 +1,64 @@
+<div style='width: 1000px;'>
+    <div class='containerTitle'>
+        Nuevo Incidente
+    </div>
+    <div class='container-fluid formulario'>
+        <form [formGroup]="incidenteForm" (ngSubmit)="saveInicident()">
+            <div class="row">
+                            
+            </div>
+            <div class="row">
+                <div class="col">
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-2">
+                                <label for="">Asunto:</label>
+                            </div>
+                            <div class="col-10">
+                                <input type="text" class='form-control'
+                                        formControlName="affair">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-2">
+                                <label for="">Adjuntar documento:</label>
+                            </div>
+                            <div class="col-10">
+                                <input type="file" class='form-control' 
+                                        formControlName="document">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-2">
+                                <label for="">Descripcion:</label>
+                            </div>
+                            <div class="col-10">
+                                <textarea type="text" class='form-control'
+                                formControlName="description"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    
+                </div>
+                <div class="col">
+                    <button class='btn btn-info btn-block' type='submit'>Crear Incidencia</button>
+                </div>
+                <div class="col">
+                    <button class='btn btn-light btn-block' (click)='closeModal()'>Cancelar</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

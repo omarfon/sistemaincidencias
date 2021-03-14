@@ -9,17 +9,11 @@
             <li><a [routerLink]="['/citaspendientes']">Citas de hoy</a></li>
             <li><a [routerLink]="['/citas']">Citas Completadas</a></li>
           </ul> -->
-          <div class="row">
-
-            <div class="col">
-                <!-- <button class='btn btn-success btn-block'>
-                    soluciones
-                </button> -->
-                <button class="btn btn-light btn-small">Abrir todo</button>
-            </div>
-            <div class="col">
-              <button class="btn btn-success btn-small">Nuevo tema</button>
-          </div>
+          <div class="col">
+              <button class='btn btn-success btn-block'
+                      (click)='openModalCreate()'>
+                  Nueva Incidencia
+              </button>
           </div>
         </ul>
       </nav>

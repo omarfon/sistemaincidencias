@@ -12,7 +12,7 @@ import { CabeceraComponent } from './share/cabecera/cabecera.component';
 import { NewIncidentComponent } from './modals/new-incident/new-incident.component';
 import { SidebarComponent } from './share/sidebar/sidebar.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatDatepickerModule, MatDialogModule, MatExpansionModule, MatFormFieldModule, MatIconModule, MatInputModule, MatStepperModule } from '@angular/material';
+import { MatDatepickerModule, MatDialogModule, MatExpansionModule, MatFormFieldModule, MatIconModule, MatInputModule, MatStepperModule, MatProgressSpinnerModule } from '@angular/material';
 
 import { AngularFireModule } from '@angular/fire';
 import { environment } from 'src/environments/environment';
@@ -23,6 +23,8 @@ import { SidebarsoluComponent } from './share/sidebarsolu/sidebarsolu.component'
 import { SidesolComponent } from './share/sidesol/sidesol.component';
 import { UserComponent } from './pages/user/user.component';
 import { CabeceraUserComponent } from './share/cabecera-user/cabecera-user.component';
+import { NewIncidentUserComponent } from './modals/new-incident-user/new-incident-user.component';
+import { SidebarUserComponent } from './share/sidebar-user/sidebar-user.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +39,9 @@ import { CabeceraUserComponent } from './share/cabecera-user/cabecera-user.compo
     SidebarsoluComponent,
     SidesolComponent,
     UserComponent,
-    CabeceraUserComponent
+    CabeceraUserComponent,
+    NewIncidentUserComponent,
+    SidebarUserComponent
   ],
   imports: [
     BrowserModule,
@@ -54,12 +58,14 @@ import { CabeceraUserComponent } from './share/cabecera-user/cabecera-user.compo
     MatIconModule,
     MatDatepickerModule,
     MatFormFieldModule,
+    MatProgressSpinnerModule,
     MatStepperModule
   ],
   providers: [],
   bootstrap: [AppComponent],
   entryComponents:[
-    NewIncidentComponent
+    NewIncidentComponent,
+    NewIncidentUserComponent
   ]
 })
 export class AppModule { }
