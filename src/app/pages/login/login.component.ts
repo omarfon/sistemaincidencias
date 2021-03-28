@@ -43,18 +43,10 @@ export class LoginComponent implements OnInit {
     const datos = this.formLogin.value;
     this.authSrv.sigIn(datos.user, datos.password).then(resp =>{
       this.usuario = resp;
-      if(resp.type == 'user'){
-        localStorage.setItem('user',JSON.stringify(resp.user));
-        this.getDataUser();
-        this.router.navigate(['home']);
-        this.loading = false;
-      }else{
         localStorage.setItem('user',JSON.stringify(resp.user));
         this.getDataTecnic();
-        this.router.navigate(['home']);
         console.log(this.usuario);
         this.loading = false;
-      }
     }).catch(err =>{
       console.log(err);
     })
@@ -64,6 +56,7 @@ export class LoginComponent implements OnInit {
     this.dateSrv.getDataTecnic().subscribe(resp =>{
       this.datatecnic = resp;
       localStorage.setItem('datatecnic', JSON.stringify(this.datatecnic[0]));
+      this.router.navigate(['home']);
     });
   }
 
@@ -71,7 +64,10 @@ export class LoginComponent implements OnInit {
     this.dateSrv.getDataUser().subscribe(resp => {
       this.dataUser = resp;
       console.log(this.dataUser);
-      localStorage.setItem('datatecnic', JSON.stringify(this.dataUser[0]));
+      localStorage.setItem('dataUser', JSON.stringify(this.dataUser[0]));
+      if(resp){
+        this.router.navigate(['usuario']);
+      }
     })
   }
 
@@ -82,7 +78,6 @@ export class LoginComponent implements OnInit {
       if(resp.user){
         localStorage.setItem('user', JSON.stringify(resp.user));
         this.getDataUser();
-        this.router.navigate(['/usuario']) 
       }
     }).catch(err =>{
       console.log(err)

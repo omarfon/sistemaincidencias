@@ -9,6 +9,7 @@ import { IncidentsService } from 'src/app/service/incidents.service';
 })
 export class UserComponent implements OnInit {
   public incidents
+  public user;
   constructor(public inciSrv: IncidentsService) { }
 
   ngOnInit() {
@@ -16,7 +17,7 @@ export class UserComponent implements OnInit {
   }
 
   getAllIncidents(){
-    this.incidents = localStorage.getItem('user');
+  this.user = localStorage.getItem('user');
     this.inciSrv.getAllIncidents().subscribe(data =>{
       this.incidents = data;
       console.log(this.incidents);

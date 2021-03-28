@@ -30,24 +30,57 @@ export class NewIncidentComponent implements OnInit {
 
   createForm(){
     return new FormGroup({
-      type: new FormControl(''),
-      impact: new FormControl(''),
-      mode: new FormControl(''),
-      solicitante: new FormControl(''),
-      state: new FormControl(''),
+      type: new FormControl('', [Validators.required]),
+      impact: new FormControl('', [Validators.required]),
+      mode: new FormControl('', [Validators.required]),
+      solicitante: new FormControl('', [Validators.required]),
+      state: new FormControl('', [Validators.required]),
       urgency: new FormControl(''),
-      tecnic: new FormControl(''),
+      tecnic: new FormControl('', [Validators.required]),
       priority: new FormControl(''),
-      category: new FormControl(''),
+      category: new FormControl('', [Validators.required]),
       datend: new FormControl(''),
       subcategory: new FormControl(''),
       hour: new FormControl(''),
       document: new FormControl(''),
       affair: new FormControl(''),
       hourCreate: new FormControl(''),
-      description: new FormControl(''),
+      description: new FormControl('', [Validators.required]),
     })
   }
+
+  get type(){
+    return this.incidenteForm.get('type')
+  }
+
+  get impact(){
+    return this.incidenteForm.get('impact')
+  }
+
+  get mode(){
+    return this.incidenteForm.get('mode')
+  }
+
+  get state(){
+    return this.incidenteForm.get('state')
+  }
+
+  get tecnic(){
+    return this.incidenteForm.get('tecnic')
+  }
+
+  get category(){
+    return this.incidenteForm.get('category')
+  }
+
+  get solicitante(){
+    return this.incidenteForm.get('solicitante')
+  }
+
+  get description(){
+    return this.incidenteForm.get('description')
+  }
+
 
   saveInicident(){
     let datos = this.incidenteForm.value;
@@ -78,7 +111,6 @@ export class NewIncidentComponent implements OnInit {
   getAllTecnics(){
     this.data.getAllTecnics().subscribe((res:any) =>{
       this.tecnicos = res;
-      this.tecnicos.orderBy('nombres', 'desc');
       console.log(this.tecnicos);
     })
   }

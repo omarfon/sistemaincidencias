@@ -10,11 +10,11 @@ import { Router } from '@angular/router';
 export class CabeceraUserComponent implements OnInit {
   public tecnic;
   constructor(public router: Router) { 
-    this.tecnic = JSON.parse(localStorage.getItem('datatecnic'));
+    this.tecnic = JSON.parse(localStorage.getItem('dataUser'));
   }
 
   ngOnInit() {
-    this.tecnic = JSON.parse(localStorage.getItem('datatecnic'));
+    this.tecnic = JSON.parse(localStorage.getItem('dataUser'));
   }
 
   closeSesion(){

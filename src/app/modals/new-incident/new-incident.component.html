@@ -3,7 +3,7 @@
         Nuevo Incidente
     </div>
     <div class='container-fluid formulario'>
-        <form [formGroup]="incidenteForm" (ngSubmit)="saveInicident()">
+        <form [formGroup]="incidenteForm" (ngSubmit)="saveInicident()" >
             <div class="row">
                 <div class="col-6">
                     <div class="form-group">
@@ -13,12 +13,18 @@
                             </div>
                             <div class='col-9'>
                                 <select type="text" class='form-control'
-                                        formControlName="type">
+                                        formControlName="type" 
+                                       >
                                     <option value="null">Seleccionar tipo de solicitud</option>
                                     <option value="incidente">Incidente</option>
                                     <option value="requeimientoinfo">Requerimiento de info</option>
                                     <option value="requirimientoservicio">Requerimiento de servicio</option>
                                 </select>
+                                <ng-container *ngIf="!type.valid && type.touched">
+                                    <p *ngIf="type.errors.required" class="error-message">
+                                      Es necesario llenar este campo
+                                    </p>
+                                  </ng-container>
                             </div>
                         </div>
                     </div>
@@ -38,6 +44,11 @@
                                     <option value="abierta">Afecta Grupo</option>
                                     <option value="abierta">Afecta a usuario</option>
                                 </select>
+                                <ng-container *ngIf="!impact.valid && impact.touched">
+                                    <p *ngIf="impact.errors.required" class="error-message">
+                                      Es necesario llenar este campo
+                                    </p>
+                                  </ng-container>
                             </div>
                         </div>
                     </div>
@@ -56,6 +67,11 @@
                                     <option value="requeimientoinfo">Telefono</option>
                                     <option value="requirimientoservicio">Formulario web</option>
                                 </select>
+                                <ng-container *ngIf="!mode.valid && mode.touched">
+                                    <p *ngIf="mode.errors.required" class="error-message">
+                                      Es necesario llenar este campo
+                                    </p>
+                                  </ng-container>
                             </div>
                         </div>
                     </div>
@@ -72,6 +88,11 @@
                                     <option value="null">Selecciona  solicitante</option>
                                     <option [ngValue]="u" *ngFor='let u of usuarios'>{{u.nombres}} {{u.apellido_p}}</option>
                                 </select>
+                                <ng-container *ngIf="!solicitante.valid && solicitante.touched">
+                                    <p *ngIf="solicitante.errors.required" class="error-message">
+                                      Es necesario llenar este campo
+                                    </p>
+                                  </ng-container>
                             </div>
                         </div>
                     </div>
@@ -127,6 +148,14 @@
                                     <option value="null">Selecciona Tecnico</option>
                                 <option [ngValue]="t" *ngFor='let t of tecnicos' >{{t.nombres}} {{t.apellidop}}</option>
                                 </select>
+                                <ng-container *ngIf="!tecnic.valid && tecnic.touched">
+                                    <p *ngIf="tecnic.errors.required" class="error-message">
+                                      Es necesario llenar este campo
+                                    </p>
+                                    <p *ngIf="tecnic.errors.minlength" class="error-message">
+                                      Ingresa como mínimo 5 letras
+                                    </p>
+                                  </ng-container>
                             </div>
                         </div>
                     </div>
@@ -174,6 +203,14 @@
                                 <option value="null">Selecciona Categoria</option>
                                 <option [ngValue]="c" *ngFor='let c of categorias'>{{c.id}} </option>
                                </select>
+                               <ng-container *ngIf="!category.valid && category.touched">
+                                <p *ngIf="category.errors.required" class="error-message">
+                                  Es necesario llenar este campo
+                                </p>
+                                <p *ngIf="category.errors.minlength" class="error-message">
+                                  Ingresa como mínimo 5 letras
+                                </p>
+                              </ng-container>
                             </div>
                         </div>
                     </div>
@@ -298,6 +335,14 @@
                                 <textarea type="text" class='form-control'
                                 formControlName="description"></textarea>
                             </div>
+                            <ng-container *ngIf="!description.valid && description.touched">
+                                <p *ngIf="description.errors.required" class="error-message">
+                                  Es necesario llenar este campo
+                                </p>
+                                <p *ngIf="description.errors.minlength" class="error-message">
+                                  Ingresa como mínimo 5 letras
+                                </p>
+                              </ng-container>
                         </div>
                     </div>
                 </div>
@@ -307,7 +352,7 @@
                     
                 </div>
                 <div class="col">
-                    <button class='btn btn-info btn-block' type='submit'>Crear Incidencia</button>
+                    <button class='btn btn-info btn-block' [disabled]="!incidenteForm.validate" type='submit'>Crear Incidencia</button>
                 </div>
                 <div class="col">
                     <button class='btn btn-light btn-block' (click)='closeModal()'>Cancelar</button>
