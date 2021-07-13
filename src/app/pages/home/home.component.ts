@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { DatanormalService } from 'src/app/service/datanormal.service';
 import { IncidentsService } from 'src/app/service/incidents.service';
 
@@ -10,15 +11,16 @@ import { IncidentsService } from 'src/app/service/incidents.service';
 })
 export class HomeComponent implements OnInit {
   public incidencias;
-  public tecnic;
   public tecnicos;
   public categorias;
   public usuarios;
+  public incidenteForm: FormGroup;
 
   constructor(public incidentSrv: IncidentsService,
               public data: DatanormalService) {
 
                 this.getAllIncidents();
+                this.incidenteForm = this.createForm();
                }
 
             
@@ -43,6 +45,59 @@ export class HomeComponent implements OnInit {
           console.log(this.incidencias)
         })
       }
+  }
+
+  createForm(){
+    return new FormGroup({
+      type: new FormControl('', [Validators.required]),
+      impact: new FormControl('', [Validators.required]),
+      mode: new FormControl('', [Validators.required]),
+      solicitante: new FormControl('', [Validators.required]),
+      state: new FormControl('', [Validators.required]),
+      urgency: new FormControl(''),
+      tecnic: new FormControl('', [Validators.required]),
+      priority: new FormControl(''),
+      category: new FormControl('', [Validators.required]),
+      datend: new FormControl(''),
+      subcategory: new FormControl(''),
+      hour: new FormControl(''),
+      document: new FormControl(''),
+      affair: new FormControl(''),
+      hourCreate: new FormControl(''),
+      description: new FormControl('', [Validators.required]),
+    })
+  }
+
+  get type(){
+    return this.incidenteForm.get('type')
+  }
+
+  get impact(){
+    return this.incidenteForm.get('impact')
+  }
+
+  get mode(){
+    return this.incidenteForm.get('mode')
+  }
+
+  get state(){
+    return this.incidenteForm.get('state')
+  }
+
+  get tecnic(){
+    return this.incidenteForm.get('tecnic')
+  }
+
+  get category(){
+    return this.incidenteForm.get('category')
+  }
+
+  get solicitante(){
+    return this.incidenteForm.get('solicitante')
+  }
+
+  get description(){
+    return this.incidenteForm.get('description')
   }
 
  /*  getAllTecnics(){

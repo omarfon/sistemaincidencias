@@ -37,3 +37,26 @@ mat-expansion-panel-header{
     margin-top:3px;
     margin-bottom:10px;
 }
+label{
+    font-size:.8em;
+    font-weight: 400;
+    width:100%;
+    text-align: right!important;
+    float: right;
+    color:#a6a9b6;
+}
+.container-fluid{
+    padding:0 10px;
+}
+.error-message{
+    color:red;
+    font-size:.8em;
+}
+select{
+    padding-top:0;
+    padding-bottom:0;
+}
+input{
+    padding-top:0;
+    padding-bottom:0;
+}

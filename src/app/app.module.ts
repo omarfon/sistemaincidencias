@@ -26,6 +26,7 @@ import { CabeceraUserComponent } from './share/cabecera-user/cabecera-user.compo
 import { NewIncidentUserComponent } from './modals/new-incident-user/new-incident-user.component';
 import { SidebarUserComponent } from './share/sidebar-user/sidebar-user.component';
 import { ChartsModule, ThemeService } from 'ng2-charts';
+import { NewThemeComponent } from './modals/new-theme/new-theme.component';
 
 
 
@@ -44,7 +45,8 @@ import { ChartsModule, ThemeService } from 'ng2-charts';
     UserComponent,
     CabeceraUserComponent,
     NewIncidentUserComponent,
-    SidebarUserComponent
+    SidebarUserComponent,
+    NewThemeComponent
   ],
   imports: [
     BrowserModule,
@@ -69,7 +71,8 @@ import { ChartsModule, ThemeService } from 'ng2-charts';
   bootstrap: [AppComponent],
   entryComponents:[
     NewIncidentComponent,
-    NewIncidentUserComponent
+    NewIncidentUserComponent,
+    NewThemeComponent
   ]
 })
 export class AppModule { }

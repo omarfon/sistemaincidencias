@@ -151,7 +151,335 @@
                                       <p>{{i.data.description}}</p> 
                                     </mat-step>
                                     <mat-step label="Resolucion">
-                                     
+                                      <div class="container-fluid formulario">
+                                        <form [formGroup]="incidenteForm" (ngSubmit)="saveInicident()" >
+                                          <div class="row">
+                                              <div class="col-5">
+                                                  <div class="form-group">
+                                                      <div class="row">
+                                                          <!-- <div class="col-3">
+                                                              <label for="">Tipo de solicitud:</label>
+                                                          </div> -->
+                                                          <div class='col-11'>
+                                                              <select type="text" class='form-control'
+                                                                      formControlName="type">
+                                                                  <option value="" selected disabled>Tipo de solicitud</option>
+                                                                  <option value="incidente">Incidente</option>
+                                                                  <option value="requeimientoinfo">Requerimiento de info</option>
+                                                                  <option value="requirimientoservicio">Requerimiento de servicio</option>
+                                                              </select>
+                                                              <ng-container *ngIf="!type.valid && type.touched">
+                                                                  <p *ngIf="type.errors.required" class="error-message">
+                                                                    Es necesario llenar este campo
+                                                                  </p>
+                                                                </ng-container>
+                                                          </div>
+                                                      </div>
+                                                  </div>
+                                              </div>
+                                              <div class="col-5">
+                                                  <div class="form-group">
+                                                      <div class="row">
+                
+                                                          <div class="col-11">
+                                                              <select type="text" class='form-control'
+                                                                      formControlName="impact">
+                                                                  <option value="" selected disabled>Impacto</option>
+                                                                  <option value="abierta">Afecta negocio</option>
+                                                                  <option value="abierta">Afecta Departamento</option>
+                                                                  <option value="abierta">Afecta Grupo</option>
+                                                                  <option value="abierta">Afecta a usuario</option>
+                                                              </select>
+                                                              <ng-container *ngIf="!impact.valid && impact.touched">
+                                                                  <p *ngIf="impact.errors.required" class="error-message">
+                                                                    Es necesario llenar este campo
+                                                                  </p>
+                                                                </ng-container>
+                                                          </div>
+                                                      </div>
+                                                  </div>
+                                              </div>
+                                              <div class="col-5">
+                                                  <div class="form-group">
+                                                      <div class="row">
+                                   
+                                                          <div class='col-11'>
+                                                              <select type="text" class='form-control'
+                                                                      formControlName="mode">
+                                                                  <option value="" selected disabled>Modo</option>
+                                                                  <option value="incidente">Email</option>
+                                                                  <option value="requeimientoinfo">Telefono</option>
+                                                                  <option value="requirimientoservicio">Formulario web</option>
+                                                              </select>
+                                                              <ng-container *ngIf="!mode.valid && mode.touched">
+                                                                  <p *ngIf="mode.errors.required" class="error-message">
+                                                                    Es necesario llenar este campo
+                                                                  </p>
+                                                                </ng-container>
+                                                          </div>
+                                                      </div>
+                                                  </div>
+                                              </div>
+                                        <!--       <div class="col-5">
+                                                  <div class="form-group">
+                                                      <div class="row">
+                                
+                                                          <div class="col-9">
+                                                              <select type="text" class='form-control'
+                                                                      formControlName="solicitante">
+                                                                  <option value="" selected disabled>Solicitante</option>
+                                                                  <option [ngValue]="u" *ngFor='let u of usuarios'>{{u.nombres}} {{u.apellido_p}}</option>
+                                                              </select>
+                                                              <ng-container *ngIf="!solicitante.valid && solicitante.touched">
+                                                                  <p *ngIf="solicitante.errors.required" class="error-message">
+                                                                    Es necesario llenar este campo
+                                                                  </p>
+                                                                </ng-container>
+                                                          </div>
+                                                      </div>
+                                                  </div>
+                                              </div> -->
+                                              <div class="col-5">
+                                                  <div class="form-group">
+                                                      <div class="row">
+                                       
+                                                          <div class='col-11'>
+                                                              <select type="text" class='form-control'
+                                                                      formControlName="state">
+                                                                  <option value="" selected disabled>Estado</option>
+                                                                  <option value="abierta">Abierta</option>
+                                                                  <option value="cerrada">Cerrada</option>
+                                                                  <option value="cancelada">Cancelada</option>
+                                                              </select>
+                              
+                                                          </div>
+                                                      </div>
+                                                  </div>
+                                              </div>
+                                              <div class="col-5">
+                                                  <div class="form-group">
+                                                      <div class="row">
+                                                          <div class="col-11">
+                                                              <select type="text" class='form-control'
+                                                                      formControlName="urgency">
+                                                                  <option value="" selected disabled>Urgencia</option>
+                                                                  <option value="abierta">Alta</option>
+                                                                  <option value="abierta">Baja</option>
+                                                                  <option value="abierta">Normal</option>
+                                                                  <option value="abierta">Urgente</option>
+                                                              </select>
+                                                          </div>
+                                                      </div>
+                                                  </div>
+                                              </div>
+                                              <div class="col-5">
+                                                  <div class="form-group">
+                                                      <div class="row">
+                                                    
+                                                          <div class="col-11">
+                                                              <select type="text" class='form-control'
+                                                                      formControlName="tecnic"
+                                                                      [(ngModel)]="tecnico">
+                                                                  <option value="" selected disabled>Técnico</option>
+                                                              <option [ngValue]="t" *ngFor='let t of tecnicos' >{{t.nombres}} {{t.apellidop}}</option>
+                                                              </select>
+                                                              <ng-container *ngIf="!tecnic.valid && tecnic.touched">
+                                                                  <p *ngIf="tecnic.errors.required" class="error-message">
+                                                                    Es necesario llenar este campo
+                                                                  </p>
+                                                                  <p *ngIf="tecnic.errors.minlength" class="error-message">
+                                                                    Ingresa como mínimo 5 letras
+                                                                  </p>
+                                                                </ng-container>
+                                                          </div>
+                                                      </div>
+                                                  </div>
+                                              </div>
+                                              <div class="col-5">
+                                                  <div class="form-group">
+                                                      <div class="row">
+                                                   
+                                                          <div class="col-11">
+                                                              <select type="text" class='form-control'
+                                                                      formControlName="priority">
+                                                                  <option value="" selected disabled>Prioridad</option>
+                                                                  <option value="alta">Alta</option>
+                                                                  <option value="baja">Baja</option>
+                                                                  <option value="normal">Normal</option>
+                                                                  <option value="urgente">Urgente</option>
+                                                              </select>
+                                                          </div>
+                                                      </div>
+                                                  </div>
+                                              </div>
+                                             <!--  <div class="col-6">
+                                                  <div class="form-group">
+                                                      <div class="row">
+                                                          <div class="col-3">
+                                                              <label for="">Categoria de servicio:</label>
+                                                          </div>
+                                                          <div class="col-9">
+                                                              <input type="text" class='form-control'>
+                                                          </div>
+                                                      </div>
+                                                  </div>
+                                              </div> -->
+                                              <div class="col-5">
+                                                  <div class="form-group">
+                                                      <div class="row">
+                                                   
+                                                          <div class="col-11">
+                                                              <select type=text class='form-control'
+                                                                      formControlName="category">
+                                                              <option value="" selected disabled>Categoria</option>
+                                                              <option [ngValue]="c" *ngFor='let c of categorias'>{{c.id}} </option>
+                                                             </select>
+                                                             <ng-container *ngIf="!category.valid && category.touched">
+                                                              <p *ngIf="category.errors.required" class="error-message">
+                                                                Es necesario llenar este campo
+                                                              </p>
+                                                              <p *ngIf="category.errors.minlength" class="error-message">
+                                                                Ingresa como mínimo 5 letras
+                                                              </p>
+                                                            </ng-container>
+                                                          </div>
+                                                      </div>
+                                                  </div>
+                                              </div>
+                                              <div class="col-5">
+                                                  <div class="form-group">
+                                                      <div class="row">
+                                                        
+                                                          <div class="col-11">
+                                                              <input type="date" class='form-control' formControlName="datend" placeholder="Fecga de vencimiento">
+                                                          </div>
+                                                      </div>
+                                                  </div>
+                                              </div>
+                                              <div class="col-5">
+                                                  <div class="form-group">
+                                                      <div class="row">
+                                      
+                                                          <div class="col-11">
+                                                              <select type="text" class='form-control'
+                                                                      formControlName="subcategory">
+                                                                  <option value="" selected disabled>Subcategoría</option>
+                                                                  <option value="Selecciona subcategoria"></option>
+                                                              </select>
+                                                          </div>
+                                                      </div>
+                                                  </div>
+                                              </div>
+                                    <!--           <div class="col-5">
+                                                  <div class="form-group">
+                                                      <div class="row">
+                                                      
+                                                          <div class="col-9">
+                                                              <input type="hour" class='form-control'
+                                                                      placeholder='Última actualizacion'
+                                                                      formControlName="hour">
+                                                          </div>
+                                                      </div>
+                                                  </div>
+                                              </div> -->
+                                  <!--             <div class="col-5">
+                                                   <div class="form-group">
+                                                      <div class="row">
+                                                          <div class="col-9">
+                                                              <select type="text" class='form-control'>
+                                                                  <option disabled value="" selected disabled>selecciona hora</option>
+                                                                  <option value="1">1 hora</option>
+                                                                  <option value="2">2 horas</option>
+                                                                  <option value="3">3 horas</option>
+                                                                  <option value="4">4 horas</option>
+                                                              </select>
+                                                          </div>
+                                                      </div>
+                                                  </div>
+                                              </div>
+                                               -->
+                                          </div>
+                                          <div class="row">
+                                              <div class="col-5">
+                                                  <div class="form-group">
+                                                      <div class="row">
+                                                        
+                                                          <div class="col-11">
+                                                              <input type="file" class='form-control' 
+                                                                      placeholder="Documento"
+                                                                      formControlName="document">
+                                                          </div>
+                                                      </div>
+                                                  </div>
+                                                  <div class="form-group">
+                                                      <div class="row">
+                                                         
+                                                          <div class="col-11">
+                                                              <input type="text" class='form-control'
+                                                                      placeholder="Asunto"
+                                                                      formControlName="affair">
+                                                          </div>
+                                                      </div>
+                                                  </div>
+                                              </div>
+                                              <div class="col-5">
+                                                  <div class="form-group">
+                                                      <div class="row">
+                                                        
+                                                          <div class="col-11">
+                                                              <input type="date" class='form-control'
+                                                              placeholder="Fecha de creación"
+                                                              formControlName="hourCreate">
+                                                          </div>
+                                                      </div>
+                                                  </div>
+                                                  
+                                                      <div class="form-group">
+                                                          <div class="row">
+                                                              
+                                                              <div class="col-11">
+                                                                  <input type="time" class='form-control' placeholder="Hora de vencimmiento">
+                                                              </div>
+                                                          </div>
+                                                      </div>
+                                              
+                                              </div>
+                                          </div>
+                                  <!--         <div class="row">
+                                              <div class="col">
+                                                  <div class="form-group">
+                                                      <div class="row">
+                                                         
+                                                          <div class="col-10">
+                                                              <textarea type="text" class='form-control'
+                                                              placeholder="descripción"
+                                                              formControlName="description"></textarea>
+                                                          </div>
+                                                          <ng-container *ngIf="!description.valid && description.touched">
+                                                              <p *ngIf="description.errors.required" class="error-message">
+                                                                Es necesario llenar este campo
+                                                              </p>
+                                                              <p *ngIf="description.errors.minlength" class="error-message">
+                                                                Ingresa como mínimo 5 letras
+                                                              </p>
+                                                            </ng-container>
+                                                      </div>
+                                                  </div>
+                                              </div>
+                                          </div> -->
+                                          <div class="row">
+                                              <div class="col">
+                                                  
+                                              </div>
+                                              <div class="col">
+                                                  <button class='btn btn-info btn-block' [disabled]="!incidenteForm.validate" type='submit'>Actualizar Incidencia</button>
+                                              </div>
+                                            <!--   <div class="col">
+                                                  <button class='btn btn-light btn-block' (click)='closeModal()'>Cancelar</button>
+                                              </div> -->
+                                          </div>
+                                      </form>
+                                      </div>
                                     </mat-step>
                                     <mat-step label="Tareas">
                                       <p>You are now done.</p>
@@ -185,7 +513,7 @@
                                   </div>
                                   <div class='row'>
                                     <div class="col titulo">Email</div>
-                                    <div class="col resultado">: {{i.data.solicitante.email}}</div>
+                                    <div class="col resultado">: {{i.data.solicitante.email | slice:0:15}}</div>
                                   </div>
                                 <div class='row'>
                                   <div class="col titulo">Celular</div>
