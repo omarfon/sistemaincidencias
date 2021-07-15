@@ -1,376 +1,484 @@
 <app-cabecera></app-cabecera>
 <app-sidebar></app-sidebar>
-<div class="page-wrapper" style="height:100vh!important;">
-    <div class="container">
+<div class="page-wrapper" style="height: 100vh !important">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12 col-md-12 m-t-20">
         <div class="row">
-            <div class="col-lg-12 col-md-12 m-t-20">
-              <div class="row">
-                <div class="col-lg-3">
-                  <div class="card bg-info text-white">
-                    <div class="card-body">
-                      <div class="d-flex">
-                        <div class="stats">
-                          <h2 class="text-white" *ngIf='incidencias'>{{incidencias.length}}</h2>
-                          <h6 class="text-white">Total de tickets</h6>
-                          <!-- <button class="btn btn-rounded btn-outline btn-light m-t-10 font-14"
+          <div class="col-lg-3">
+            <div class="card bg-info text-white">
+              <div class="card-body">
+                <div class="d-flex">
+                  <div class="stats">
+                    <h2 class="text-white" *ngIf="incidencias">
+                      {{ incidencias.length }}
+                    </h2>
+                    <h6 class="text-white">Total de tickets</h6>
+                    <!-- <button class="btn btn-rounded btn-outline btn-light m-t-10 font-14"
                             (click)="goToCitasPendientes()">Revisar</button> -->
-                        </div>
-                        <div class="stats-icon text-right ml-auto"><i class="icon-people display-5 op-3 text-dark"></i>
-                        </div>
-                      </div>
-                    </div>
+                  </div>
+                  <div class="stats-icon text-right ml-auto">
+                    <i class="icon-people display-5 op-3 text-dark"></i>
                   </div>
                 </div>
-                <div class="col-lg-3">
-                  <div class="card bg-primary text-white">
-                    <div class="card-body">
-                      <div class="d-flex">
-                        <div class="stats">
-                          <h2 class="text-white">20</h2>
-                          <h6 class="text-white">Tickets categorizados</h6>
-                          <!-- <button class="btn btn-rounded btn-outline btn-light m-t-10 font-14"
-                            (click)="goToCitas()">Revisar</button> -->
-                        </div>
-                        <div class="stats-icon text-right ml-auto"><i class=" icon-badge display-5 op-3 text-dark"></i>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-lg-3">
-                  <div class="card bg-success text-white">
-                    <div class="card-body">
-                      <div class="d-flex">
-                        <div class="stats">
-                          <h2 class="text-white">3</h2>
-                          <h6 class="text-white">Tickets resueltos</h6>
-                          <!-- <button class="btn btn-rounded btn-outline btn-light m-t-10 font-14">Revisar</button> -->
-                        </div>
-                        <div class="stats-icon text-right ml-auto"><i class="icon-eyeglass display-5 op-3 text-dark"></i>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-        
-                </div>
-                <div class="col-lg-3">
-                    <div class="card bg-dark text-white">
-                      <div class="card-body">
-                        <div class="d-flex">
-                          <div class="stats">
-                            <h2 class="text-white">20</h2>
-                            <h6 class="text-white">Tickets pendientes</h6>
-                            <!-- <button class="btn btn-rounded btn-outline btn-light m-t-10 font-14">Revisar</button> -->
-                          </div>
-                          <div class="stats-icon text-right ml-auto"><i class="icon-eyeglass display-5 op-3 text-dark"></i>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-          
-                  </div>
               </div>
             </div>
-            <div class="col-lg-8"></div>
-        
+          </div>
+          <div class="col-lg-3">
+            <div class="card bg-primary text-white">
+              <div class="card-body">
+                <div class="d-flex">
+                  <div class="stats">
+                    <h2 class="text-white">20</h2>
+                    <h6 class="text-white">Tickets categorizados</h6>
+                    <!-- <button class="btn btn-rounded btn-outline btn-light m-t-10 font-14"
+                            (click)="goToCitas()">Revisar</button> -->
+                  </div>
+                  <div class="stats-icon text-right ml-auto">
+                    <i class="icon-badge display-5 op-3 text-dark"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-3">
+            <div class="card bg-success text-white">
+              <div class="card-body">
+                <div class="d-flex">
+                  <div class="stats">
+                    <h2 class="text-white">3</h2>
+                    <h6 class="text-white">Tickets resueltos</h6>
+                    <!-- <button class="btn btn-rounded btn-outline btn-light m-t-10 font-14">Revisar</button> -->
+                  </div>
+                  <div class="stats-icon text-right ml-auto">
+                    <i class="icon-eyeglass display-5 op-3 text-dark"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-3">
+            <div class="card bg-dark text-white">
+              <div class="card-body">
+                <div class="d-flex">
+                  <div class="stats">
+                    <h2 class="text-white">20</h2>
+                    <h6 class="text-white">Tickets pendientes</h6>
+                    <!-- <button class="btn btn-rounded btn-outline btn-light m-t-10 font-14">Revisar</button> -->
+                  </div>
+                  <div class="stats-icon text-right ml-auto">
+                    <i class="icon-eyeglass display-5 op-3 text-dark"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
+      </div>
+      <div class="col-lg-8"></div>
     </div>
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-1">
-                <p class='titulo'>ID</p>
-            </div>
-            <div class="col-2">
-                <p class='titulo'>MENSAJE</p>
-            </div>
-            <div class="col-2">
-                <p class='titulo'>REQUERIDO POR</p>
-            </div>
-            <div class="col-2">
-                <p class='titulo'>ASIGNADO A</p>
-            </div>
-            <div class="col-2">
-                <p class='titulo'>CATEGORIZADO</p>
-            </div>
-            <div class="col-1">
-                <p class='titulo'>FECHA</p>
-            </div>
-            <div class="col-1">
-                <p class='titulo'>HORA</p>
-            </div>
-            <div class="col-1">
-                <p class='titulo'>STATUS</p>
-            </div>
-        </div>
+    <div class="containerfilter">
+       <div class="form-group">
+                                  <div class="row">
+                                    <div class="col-12">
+                                        <input type="text" class='form-control'
+                                        placeholder='Busca incidencia'
+                                        formControlName="hour">
+                                         </div>
+                                  </div>
+                                </div>
     </div>
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-12" >
-                <mat-accordion class="example-headers-align" multi *ngIf='incidencias'>
-                  <div class='card cardissue' *ngFor='let i of incidencias'>
-                        <div class='card-body'>
-                          <div class="row">
-                            <div class="col-1">
-                              <p class='tituloUno'>{{i.data.date.seconds}}</p>
-                          </div>
-                          <div class="col-2">
-                              <p class='tituloUno'>{{i.data.description | slice:0:20}}...</p>
-                          </div>
-                          <div class="col-2">
-                              <p class='tituloUno'>{{i.data.solicitante.nombres}} {{i.data.solicitante.apellido_p}}</p>
-                          </div>
-                          <div class="col-2">
-                              <p class='tituloUno'>{{i.data.tecnic.nombres}} {{i.data.tecnic.apellidop}}</p>
-                          </div>
-                          <div class="col-2">
-                              <p class='tituloUno'>{{i.data.category.id}}</p>
-                          </div>
-                          <div class="col-1">
-                              <p class='tituloUno'>{{i.data.datend | date:'shortDate'}}</p>
-                          </div>
-                          <div class="col-1">
-                              <p class='tituloUno'>{{i.data.date.seconds | date:'shortTime'}}</p>
-                          </div>
-                          <div class="col-1" *ngIf='i.data.state == "abierta"'>
-                              <button class='btn btn-success btn-rounded btn-xs'>{{i.data.state}}</button>
-                          </div>
-                          <div class="col-1" *ngIf='i.data.state == "pendiente"'>
-                            <button class='btn btn-info btn-rounded btn-xs'>{{i.data.state}}</button>
-                        </div>
-                        <div class="col-1" *ngIf='i.data.state == "cerrada"'>
-                          <button class='btn btn-warning btn-rounded btn-xs'>{{i.data.state}}</button>
-                      </div>
-                          </div>
-                            <mat-expansion-panel>
-                              <mat-expansion-panel-header>
-                              </mat-expansion-panel-header>
-                              <div class="row">
-                                <div class="col-8">
-                                  <mat-horizontal-stepper #stepper>
-                                    <mat-step label="Descripcion">
-                                      <p>{{i.data.description}}</p> 
-                                    </mat-step>
-                                    <mat-step label="Resolucion">
-                                      <div class="container-fluid formulario">
-                                        <form [formGroup]="incidenteForm" (ngSubmit)="saveInicident()" >
-                                          <div class="row">
-                                              <div class="col-5">
-                                                  <div class="form-group">
-                                                      <div class="row">
-                                                          <!-- <div class="col-3">
+  </div>
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-1">
+        <p class="titulo">ID</p>
+      </div>
+      <div class="col-2">
+        <p class="titulo">MENSAJE</p>
+      </div>
+      <div class="col-2">
+        <p class="titulo">REQUERIDO POR</p>
+      </div>
+      <div class="col-2">
+        <p class="titulo">ASIGNADO A</p>
+      </div>
+      <div class="col-2">
+        <p class="titulo">CATEGORIZADO</p>
+      </div>
+      <div class="col-1">
+        <p class="titulo">FECHA</p>
+      </div>
+      <div class="col-1">
+        <p class="titulo">HORA</p>
+      </div>
+      <div class="col-1">
+        <p class="titulo">STATUS</p>
+      </div>
+    </div>
+  </div>
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-12">
+        <mat-accordion class="example-headers-align" multi *ngIf="incidencias">
+          <div class="card cardissue" *ngFor="let i of incidencias">
+            <div class="card-body">
+              <div class="row">
+                <div class="col-1">
+                  <p class="tituloUno">{{ i.data.date.seconds }}</p>
+                </div>
+                <div class="col-2">
+                  <p class="tituloUno">
+                    {{ i.data.description | slice: 0:20 }}...
+                  </p>
+                </div>
+                <div class="col-2">
+                  <p class="tituloUno">
+                    {{ i.data.solicitante.nombres }}
+                    {{ i.data.solicitante.apellido_p }}
+                  </p>
+                </div>
+                <div class="col-2">
+                  <p class="tituloUno">
+                    {{ i.data.tecnic.nombres }} {{ i.data.tecnic.apellidop }}
+                  </p>
+                </div>
+                <div class="col-2">
+                  <p class="tituloUno">{{ i.data.category.id }}</p>
+                </div>
+                <div class="col-1">
+                  <p class="tituloUno">
+                    {{ i.data.datend | date: "shortDate" }}
+                  </p>
+                </div>
+                <div class="col-1">
+                  <p class="tituloUno">
+                    {{ i.data.date.seconds | date: "shortTime" }}
+                  </p>
+                </div>
+                <div class="col-1" *ngIf="i.data.state == 'abierta'">
+                  <button class="btn btn-success btn-rounded btn-xs">
+                    {{ i.data.state }}
+                  </button>
+                </div>
+                <div class="col-1" *ngIf="i.data.state == 'pendiente'">
+                  <button class="btn btn-info btn-rounded btn-xs">
+                    {{ i.data.state }}
+                  </button>
+                </div>
+                <div class="col-1" *ngIf="i.data.state == 'cerrada'">
+                  <button class="btn btn-warning btn-rounded btn-xs">
+                    {{ i.data.state }}
+                  </button>
+                </div>
+              </div>
+              <mat-expansion-panel>
+                <mat-expansion-panel-header> </mat-expansion-panel-header>
+                <div class="row">
+                  <div class="col-8">
+                    <mat-horizontal-stepper #stepper>
+                      <mat-step label="Descripcion">
+                        <p>{{ i.data.description }}</p>
+                      </mat-step>
+                      <mat-step label="Resolucion">
+                        <div class="container-fluid formulario">
+                          <form
+                            [formGroup]="incidenteForm"
+                            (ngSubmit)="saveInicident()"
+                          >
+                            <div class="row">
+                              <div class="col-5">
+                                <div class="form-group">
+                                  <div class="row">
+                                    <!-- <div class="col-3">
                                                               <label for="">Tipo de solicitud:</label>
                                                           </div> -->
-                                                          <div class='col-11'>
-                                                              <select type="text" class='form-control'
-                                                                      formControlName="type">
-                                                                  <option value="" selected disabled>Tipo de solicitud</option>
-                                                                  <option value="incidente">Incidente</option>
-                                                                  <option value="requeimientoinfo">Requerimiento de info</option>
-                                                                  <option value="requirimientoservicio">Requerimiento de servicio</option>
-                                                              </select>
-                                                              <ng-container *ngIf="!type.valid && type.touched">
-                                                                  <p *ngIf="type.errors.required" class="error-message">
-                                                                    Es necesario llenar este campo
-                                                                  </p>
-                                                                </ng-container>
-                                                          </div>
-                                                      </div>
-                                                  </div>
-                                              </div>
-                                              <div class="col-5">
-                                                  <div class="form-group">
-                                                      <div class="row">
-                
-                                                          <div class="col-11">
-                                                              <select type="text" class='form-control'
-                                                                      formControlName="impact">
-                                                                  <option value="" selected disabled>Impacto</option>
-                                                                  <option value="abierta">Afecta negocio</option>
-                                                                  <option value="abierta">Afecta Departamento</option>
-                                                                  <option value="abierta">Afecta Grupo</option>
-                                                                  <option value="abierta">Afecta a usuario</option>
-                                                              </select>
-                                                              <ng-container *ngIf="!impact.valid && impact.touched">
-                                                                  <p *ngIf="impact.errors.required" class="error-message">
-                                                                    Es necesario llenar este campo
-                                                                  </p>
-                                                                </ng-container>
-                                                          </div>
-                                                      </div>
-                                                  </div>
-                                              </div>
-                                              <div class="col-5">
-                                                  <div class="form-group">
-                                                      <div class="row">
-                                   
-                                                          <div class='col-11'>
-                                                              <select type="text" class='form-control'
-                                                                      formControlName="mode">
-                                                                  <option value="" selected disabled>Modo</option>
-                                                                  <option value="incidente">Email</option>
-                                                                  <option value="requeimientoinfo">Telefono</option>
-                                                                  <option value="requirimientoservicio">Formulario web</option>
-                                                              </select>
-                                                              <ng-container *ngIf="!mode.valid && mode.touched">
-                                                                  <p *ngIf="mode.errors.required" class="error-message">
-                                                                    Es necesario llenar este campo
-                                                                  </p>
-                                                                </ng-container>
-                                                          </div>
-                                                      </div>
-                                                  </div>
-                                              </div>
-                                        <!--       <div class="col-5">
-                                                  <div class="form-group">
-                                                      <div class="row">
-                                
-                                                          <div class="col-9">
-                                                              <select type="text" class='form-control'
-                                                                      formControlName="solicitante">
-                                                                  <option value="" selected disabled>Solicitante</option>
-                                                                  <option [ngValue]="u" *ngFor='let u of usuarios'>{{u.nombres}} {{u.apellido_p}}</option>
-                                                              </select>
-                                                              <ng-container *ngIf="!solicitante.valid && solicitante.touched">
-                                                                  <p *ngIf="solicitante.errors.required" class="error-message">
-                                                                    Es necesario llenar este campo
-                                                                  </p>
-                                                                </ng-container>
-                                                          </div>
-                                                      </div>
-                                                  </div>
-                                              </div> -->
-                                              <div class="col-5">
-                                                  <div class="form-group">
-                                                      <div class="row">
-                                       
-                                                          <div class='col-11'>
-                                                              <select type="text" class='form-control'
-                                                                      formControlName="state">
-                                                                  <option value="" selected disabled>Estado</option>
-                                                                  <option value="abierta">Abierta</option>
-                                                                  <option value="cerrada">Cerrada</option>
-                                                                  <option value="cancelada">Cancelada</option>
-                                                              </select>
-                              
-                                                          </div>
-                                                      </div>
-                                                  </div>
-                                              </div>
-                                              <div class="col-5">
-                                                  <div class="form-group">
-                                                      <div class="row">
-                                                          <div class="col-11">
-                                                              <select type="text" class='form-control'
-                                                                      formControlName="urgency">
-                                                                  <option value="" selected disabled>Urgencia</option>
-                                                                  <option value="abierta">Alta</option>
-                                                                  <option value="abierta">Baja</option>
-                                                                  <option value="abierta">Normal</option>
-                                                                  <option value="abierta">Urgente</option>
-                                                              </select>
-                                                          </div>
-                                                      </div>
-                                                  </div>
-                                              </div>
-                                              <div class="col-5">
-                                                  <div class="form-group">
-                                                      <div class="row">
-                                                    
-                                                          <div class="col-11">
-                                                              <select type="text" class='form-control'
-                                                                      formControlName="tecnic"
-                                                                      [(ngModel)]="tecnico">
-                                                                  <option value="" selected disabled>Técnico</option>
-                                                              <option [ngValue]="t" *ngFor='let t of tecnicos' >{{t.nombres}} {{t.apellidop}}</option>
-                                                              </select>
-                                                              <ng-container *ngIf="!tecnic.valid && tecnic.touched">
-                                                                  <p *ngIf="tecnic.errors.required" class="error-message">
-                                                                    Es necesario llenar este campo
-                                                                  </p>
-                                                                  <p *ngIf="tecnic.errors.minlength" class="error-message">
-                                                                    Ingresa como mínimo 5 letras
-                                                                  </p>
-                                                                </ng-container>
-                                                          </div>
-                                                      </div>
-                                                  </div>
-                                              </div>
-                                              <div class="col-5">
-                                                  <div class="form-group">
-                                                      <div class="row">
-                                                   
-                                                          <div class="col-11">
-                                                              <select type="text" class='form-control'
-                                                                      formControlName="priority">
-                                                                  <option value="" selected disabled>Prioridad</option>
-                                                                  <option value="alta">Alta</option>
-                                                                  <option value="baja">Baja</option>
-                                                                  <option value="normal">Normal</option>
-                                                                  <option value="urgente">Urgente</option>
-                                                              </select>
-                                                          </div>
-                                                      </div>
-                                                  </div>
-                                              </div>
-                                             <!--  <div class="col-6">
-                                                  <div class="form-group">
-                                                      <div class="row">
-                                                          <div class="col-3">
-                                                              <label for="">Categoria de servicio:</label>
-                                                          </div>
-                                                          <div class="col-9">
-                                                              <input type="text" class='form-control'>
-                                                          </div>
-                                                      </div>
-                                                  </div>
-                                              </div> -->
-                                              <div class="col-5">
-                                                  <div class="form-group">
-                                                      <div class="row">
-                                                   
-                                                          <div class="col-11">
-                                                              <select type=text class='form-control'
-                                                                      formControlName="category">
-                                                              <option value="" selected disabled>Categoria</option>
-                                                              <option [ngValue]="c" *ngFor='let c of categorias'>{{c.id}} </option>
-                                                             </select>
-                                                             <ng-container *ngIf="!category.valid && category.touched">
-                                                              <p *ngIf="category.errors.required" class="error-message">
-                                                                Es necesario llenar este campo
-                                                              </p>
-                                                              <p *ngIf="category.errors.minlength" class="error-message">
-                                                                Ingresa como mínimo 5 letras
-                                                              </p>
-                                                            </ng-container>
-                                                          </div>
-                                                      </div>
-                                                  </div>
-                                              </div>
-                                              <div class="col-5">
-                                                  <div class="form-group">
-                                                      <div class="row">
-                                                        
-                                                          <div class="col-11">
-                                                              <input type="date" class='form-control' formControlName="datend" placeholder="Fecga de vencimiento">
-                                                          </div>
-                                                      </div>
-                                                  </div>
-                                              </div>
-                                              <div class="col-5">
-                                                  <div class="form-group">
-                                                      <div class="row">
-                                      
-                                                          <div class="col-11">
-                                                              <select type="text" class='form-control'
-                                                                      formControlName="subcategory">
-                                                                  <option value="" selected disabled>Subcategoría</option>
-                                                                  <option value="Selecciona subcategoria"></option>
-                                                              </select>
-                                                          </div>
-                                                      </div>
-                                                  </div>
-                                              </div>
-                                    <!--           <div class="col-5">
+                                    <div class="col-11">
+                                      <select
+                                        type="text"
+                                        class="form-control"
+                                        formControlName="type"
+                                      >
+                                        <option value="" selected disabled>
+                                          Tipo de solicitud
+                                        </option>
+                                        <option value="incidente">
+                                          Incidente
+                                        </option>
+                                        <option value="requeimientoinfo">
+                                          Requerimiento de info
+                                        </option>
+                                        <option value="requirimientoservicio">
+                                          Requerimiento de servicio
+                                        </option>
+                                      </select>
+                                      <ng-container
+                                        *ngIf="!type.valid && type.touched"
+                                      >
+                                        <p
+                                          *ngIf="type.errors.required"
+                                          class="error-message"
+                                        >
+                                          Es necesario llenar este campo
+                                        </p>
+                                      </ng-container>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="col-5">
+                                <div class="form-group">
+                                  <div class="row">
+                                    <div class="col-11">
+                                      <select
+                                        type="text"
+                                        class="form-control"
+                                        formControlName="impact"
+                                      >
+                                        <option value="" selected disabled>
+                                          Impacto
+                                        </option>
+                                        <option value="abierta">
+                                          Afecta negocio
+                                        </option>
+                                        <option value="abierta">
+                                          Afecta Departamento
+                                        </option>
+                                        <option value="abierta">
+                                          Afecta Grupo
+                                        </option>
+                                        <option value="abierta">
+                                          Afecta a usuario
+                                        </option>
+                                      </select>
+                                      <ng-container
+                                        *ngIf="!impact.valid && impact.touched"
+                                      >
+                                        <p
+                                          *ngIf="impact.errors.required"
+                                          class="error-message"
+                                        >
+                                          Es necesario llenar este campo
+                                        </p>
+                                      </ng-container>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="col-5">
+                                <div class="form-group">
+                                  <div class="row">
+                                    <div class="col-11">
+                                      <select
+                                        type="text"
+                                        class="form-control"
+                                        formControlName="mode"
+                                      >
+                                        <option value="" selected disabled>
+                                          Modo
+                                        </option>
+                                        <option value="incidente">Email</option>
+                                        <option value="requeimientoinfo">
+                                          Telefono
+                                        </option>
+                                        <option value="requirimientoservicio">
+                                          Formulario web
+                                        </option>
+                                      </select>
+                                      <ng-container
+                                        *ngIf="!mode.valid && mode.touched"
+                                      >
+                                        <p
+                                          *ngIf="mode.errors.required"
+                                          class="error-message"
+                                        >
+                                          Es necesario llenar este campo
+                                        </p>
+                                      </ng-container>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="col-5">
+                                <div class="form-group">
+                                  <div class="row">
+                                    <div class="col-11">
+                                      <select
+                                        type="text"
+                                        class="form-control"
+                                        formControlName="state"
+                                      >
+                                        <option value="" selected disabled>
+                                          Estado
+                                        </option>
+                                        <option value="abierta">Abierta</option>
+                                        <option value="cerrada">Cerrada</option>
+                                        <option value="cancelada">
+                                          Cancelada
+                                        </option>
+                                      </select>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="col-5">
+                                <div class="form-group">
+                                  <div class="row">
+                                    <div class="col-11">
+                                      <select
+                                        type="text"
+                                        class="form-control"
+                                        formControlName="urgency"
+                                      >
+                                        <option value="" selected disabled>
+                                          Urgencia
+                                        </option>
+                                        <option value="abierta">Alta</option>
+                                        <option value="abierta">Baja</option>
+                                        <option value="abierta">Normal</option>
+                                        <option value="abierta">Urgente</option>
+                                      </select>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="col-5">
+                                <div class="form-group">
+                                  <div class="row">
+                                    <div class="col-11">
+                                      <select
+                                        type="text"
+                                        class="form-control"
+                                        formControlName="tecnic"
+                                        [(ngModel)]="tecnico"
+                                      >
+                                        <option value="" selected disabled>
+                                          Técnico
+                                        </option>
+                                        <option
+                                          [ngValue]="t"
+                                          *ngFor="let t of tecnicos"
+                                        >
+                                          {{ t.nombres }} {{ t.apellidop }}
+                                        </option>
+                                      </select>
+                                      <ng-container
+                                        *ngIf="!tecnic.valid && tecnic.touched"
+                                      >
+                                        <p
+                                          *ngIf="tecnic.errors.required"
+                                          class="error-message"
+                                        >
+                                          Es necesario llenar este campo
+                                        </p>
+                                        <p
+                                          *ngIf="tecnic.errors.minlength"
+                                          class="error-message"
+                                        >
+                                          Ingresa como mínimo 5 letras
+                                        </p>
+                                      </ng-container>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="col-5">
+                                <div class="form-group">
+                                  <div class="row">
+                                    <div class="col-11">
+                                      <select
+                                        type="text"
+                                        class="form-control"
+                                        formControlName="priority"
+                                      >
+                                        <option value="" selected disabled>
+                                          Prioridad
+                                        </option>
+                                        <option value="alta">Alta</option>
+                                        <option value="baja">Baja</option>
+                                        <option value="normal">Normal</option>
+                                        <option value="urgente">Urgente</option>
+                                      </select>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="col-5">
+                                <div class="form-group">
+                                  <div class="row">
+                                    <div class="col-11">
+                                      <select
+                                        type="text"
+                                        class="form-control"
+                                        formControlName="category"
+                                      >
+                                        <option value="" selected disabled>
+                                          Categoria
+                                        </option>
+                                        <option
+                                          [ngValue]="c"
+                                          *ngFor="let c of categorias"
+                                        >
+                                          {{ c.id }}
+                                        </option>
+                                      </select>
+                                      <ng-container
+                                        *ngIf="
+                                          !category.valid && category.touched
+                                        "
+                                      >
+                                        <p
+                                          *ngIf="category.errors.required"
+                                          class="error-message"
+                                        >
+                                          Es necesario llenar este campo
+                                        </p>
+                                        <p
+                                          *ngIf="category.errors.minlength"
+                                          class="error-message"
+                                        >
+                                          Ingresa como mínimo 5 letras
+                                        </p>
+                                      </ng-container>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="col-5">
+                                <div class="form-group">
+                                  <div class="row">
+                                    <div class="col-11">
+                                      <input
+                                        type="date"
+                                        class="form-control"
+                                        formControlName="datend"
+                                        placeholder="Fecga de vencimiento"
+                                      />
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="col-5">
+                                <div class="form-group">
+                                  <div class="row">
+                                    <div class="col-11">
+                                      <select
+                                        type="text"
+                                        class="form-control"
+                                        formControlName="subcategory"
+                                      >
+                                        <option value="" selected disabled>
+                                          Subcategoría
+                                        </option>
+                                        <option
+                                          value="Selecciona subcategoria"
+                                        ></option>
+                                      </select>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                              <!--           <div class="col-5">
                                                   <div class="form-group">
                                                       <div class="row">
                                                       
@@ -382,7 +490,7 @@
                                                       </div>
                                                   </div>
                                               </div> -->
-                                  <!--             <div class="col-5">
+                              <!--             <div class="col-5">
                                                    <div class="form-group">
                                                       <div class="row">
                                                           <div class="col-9">
@@ -398,54 +506,62 @@
                                                   </div>
                                               </div>
                                                -->
-                                          </div>
-                                          <div class="row">
-                                              <div class="col-5">
-                                                  <div class="form-group">
-                                                      <div class="row">
-                                                        
-                                                          <div class="col-11">
-                                                              <input type="file" class='form-control' 
-                                                                      placeholder="Documento"
-                                                                      formControlName="document">
-                                                          </div>
-                                                      </div>
-                                                  </div>
-                                                  <div class="form-group">
-                                                      <div class="row">
-                                                         
-                                                          <div class="col-11">
-                                                              <input type="text" class='form-control'
-                                                                      placeholder="Asunto"
-                                                                      formControlName="affair">
-                                                          </div>
-                                                      </div>
-                                                  </div>
-                                              </div>
-                                              <div class="col-5">
-                                                  <div class="form-group">
-                                                      <div class="row">
-                                                        
-                                                          <div class="col-11">
-                                                              <input type="date" class='form-control'
-                                                              placeholder="Fecha de creación"
-                                                              formControlName="hourCreate">
-                                                          </div>
-                                                      </div>
-                                                  </div>
-                                                  
-                                                      <div class="form-group">
-                                                          <div class="row">
-                                                              
-                                                              <div class="col-11">
-                                                                  <input type="time" class='form-control' placeholder="Hora de vencimmiento">
-                                                              </div>
-                                                          </div>
-                                                      </div>
-                                              
-                                              </div>
-                                          </div>
-                                  <!--         <div class="row">
+                            </div>
+                            <div class="row">
+                              <div class="col-5">
+                                <div class="form-group">
+                                  <div class="row">
+                                    <div class="col-11">
+                                      <input
+                                        type="file"
+                                        class="form-control"
+                                        placeholder="Documento"
+                                        formControlName="document"
+                                      />
+                                    </div>
+                                  </div>
+                                </div>
+                                <div class="form-group">
+                                  <div class="row">
+                                    <div class="col-11">
+                                      <input
+                                        type="text"
+                                        class="form-control"
+                                        placeholder="Asunto"
+                                        formControlName="affair"
+                                      />
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="col-5">
+                                <div class="form-group">
+                                  <div class="row">
+                                    <div class="col-11">
+                                      <input
+                                        type="date"
+                                        class="form-control"
+                                        placeholder="Fecha de creación"
+                                        formControlName="hourCreate"
+                                      />
+                                    </div>
+                                  </div>
+                                </div>
+
+                                <div class="form-group">
+                                  <div class="row">
+                                    <div class="col-11">
+                                      <input
+                                        type="time"
+                                        class="form-control"
+                                        placeholder="Hora de vencimmiento"
+                                      />
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                            <!--         <div class="row">
                                               <div class="col">
                                                   <div class="form-group">
                                                       <div class="row">
@@ -467,66 +583,83 @@
                                                   </div>
                                               </div>
                                           </div> -->
-                                          <div class="row">
-                                              <div class="col">
-                                                  
-                                              </div>
-                                              <div class="col">
-                                                  <button class='btn btn-info btn-block' [disabled]="!incidenteForm.validate" type='submit'>Actualizar Incidencia</button>
-                                              </div>
-                                            <!--   <div class="col">
+                            <div class="row">
+                              <div class="col"></div>
+                              <div class="col">
+                                <button
+                                  class="btn btn-info btn-block"
+                                  [disabled]="!incidenteForm"
+                                  type="submit"
+                                >
+                                  Actualizar Incidencia
+                                </button>
+                              </div>
+                              <!--   <div class="col">
                                                   <button class='btn btn-light btn-block' (click)='closeModal()'>Cancelar</button>
                                               </div> -->
-                                          </div>
-                                      </form>
-                                      </div>
-                                    </mat-step>
-                                    <mat-step label="Tareas">
-                                      <p>You are now done.</p>
-                                      <div>
-                                        <button mat-button matStepperPrevious>Back</button>
-                                        <button mat-button (click)="stepper.reset()">Reset</button>
-                                      </div>
-                                    </mat-step>
-                                  </mat-horizontal-stepper>
-                                </div>
-                                <div class="col-3 container-grey">
-                                  <div class="row">
-                                    <div class="col titulo">Estado</div>
-                                    <div class="col resultado">: {{i.data.state}}</div>
-                                  </div>
-                                  <div class="row">
-                                    <div class="col titulo">Prioridad</div>
-                                    <div class="col resultado">: {{i.data.priority}}</div>
-                                  </div>
-                                  <div class="row">
-                                    <div class="col titulo">Tecnico</div>
-                                    <div class="col resultado">: {{i.data.tecnic.nombres}} {{i.data.tecnic.apellidop}}</div>
-                                  </div>
-                                  <div class="row">
-                                    <div class="col titulo">Solicitante</div>
-                                    <div class="col resultado">: {{i.data.solicitante.nombres}} {{i.data.solicitante.apellido_p}}</div>
-                                  </div>
-                                  <div class="row">
-                                    <div class="col titulo">Puesto</div>
-                                    <div class="col resultado">: {{i.data.solicitante.puesto}}</div>
-                                  </div>
-                                  <div class='row'>
-                                    <div class="col titulo">Email</div>
-                                    <div class="col resultado">: {{i.data.solicitante.email | slice:0:15}}</div>
-                                  </div>
-                                <div class='row'>
-                                  <div class="col titulo">Celular</div>
-                                  <div class="col resultado">: {{i.data.solicitante.cel}}</div>
-                                </div>
-                                </div>
-                              </div>
-                            </mat-expansion-panel>        
+                            </div>
+                          </form>
                         </div>
+                      </mat-step>
+                      <mat-step label="Tareas">
+                        <p>You are now done.</p>
+                        <div>
+                          <button mat-button matStepperPrevious>Back</button>
+                          <button mat-button (click)="stepper.reset()">
+                            Reset
+                          </button>
+                        </div>
+                      </mat-step>
+                    </mat-horizontal-stepper>
+                  </div>
+                  <div class="col-3 container-grey">
+                    <div class="row">
+                      <div class="col titulo">Estado</div>
+                      <div class="col resultado">: {{ i.data.state }}</div>
                     </div>
-                </mat-accordion>
-    
+                    <div class="row">
+                      <div class="col titulo">Prioridad</div>
+                      <div class="col resultado">: {{ i.data.priority }}</div>
+                    </div>
+                    <div class="row">
+                      <div class="col titulo">Tecnico</div>
+                      <div class="col resultado">
+                        : {{ i.data.tecnic.nombres }}
+                        {{ i.data.tecnic.apellidop }}
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col titulo">Solicitante</div>
+                      <div class="col resultado">
+                        : {{ i.data.solicitante.nombres }}
+                        {{ i.data.solicitante.apellido_p }}
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col titulo">Puesto</div>
+                      <div class="col resultado">
+                        : {{ i.data.solicitante.puesto }}
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col titulo">Email</div>
+                      <div class="col resultado">
+                        : {{ i.data.solicitante.email | slice: 0:15 }}
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col titulo">Celular</div>
+                      <div class="col resultado">
+                        : {{ i.data.solicitante.cel }}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </mat-expansion-panel>
             </div>
-        </div>
+          </div>
+        </mat-accordion>
+      </div>
     </div>
+  </div>
 </div>

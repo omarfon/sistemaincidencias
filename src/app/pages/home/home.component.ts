@@ -11,9 +11,11 @@ import { IncidentsService } from 'src/app/service/incidents.service';
 })
 export class HomeComponent implements OnInit {
   public incidencias;
+  public tecnico;
   public tecnicos;
   public categorias;
   public usuarios;
+  public filter;
   public incidenteForm: FormGroup;
 
   constructor(public incidentSrv: IncidentsService,
@@ -125,5 +127,9 @@ export class HomeComponent implements OnInit {
       console.log(this.usuarios);
     })
   } */
+
+  saveInicident(){
+   console.log()
+  } 
 
 }
