@@ -27,7 +27,7 @@ import { NewIncidentUserComponent } from './modals/new-incident-user/new-inciden
 import { SidebarUserComponent } from './share/sidebar-user/sidebar-user.component';
 import { ChartsModule, ThemeService } from 'ng2-charts';
 import { NewThemeComponent } from './modals/new-theme/new-theme.component';
-
+import {NgxPaginationModule} from 'ngx-pagination';
 
 
 @NgModule({
@@ -65,7 +65,8 @@ import { NewThemeComponent } from './modals/new-theme/new-theme.component';
     MatDatepickerModule,
     MatFormFieldModule,
     MatProgressSpinnerModule,
-    MatStepperModule
+    MatStepperModule,
+    NgxPaginationModule
   ],
   providers: [ThemeService],
   bootstrap: [AppComponent],

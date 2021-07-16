@@ -10,13 +10,14 @@ import { IncidentsService } from 'src/app/service/incidents.service';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
-  public incidencias;
+  public incidencias: any[];
   public tecnico;
   public tecnicos;
   public categorias;
   public usuarios;
   public filter;
   public incidenteForm: FormGroup;
+  p: number = 1;
 
   constructor(public incidentSrv: IncidentsService,
               public data: DatanormalService) {

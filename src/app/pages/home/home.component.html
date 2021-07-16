@@ -121,7 +121,7 @@
     <div class="row">
       <div class="col-12">
         <mat-accordion class="example-headers-align" multi *ngIf="incidencias">
-          <div class="card cardissue" *ngFor="let i of incidencias">
+          <div class="card cardissue" *ngFor="let i of incidencias | paginate: { itemsPerPage: 10, currentPage: p }">
             <div class="card-body">
               <div class="row">
                 <div class="col-1">
@@ -478,34 +478,6 @@
                                   </div>
                                 </div>
                               </div>
-                              <!--           <div class="col-5">
-                                                  <div class="form-group">
-                                                      <div class="row">
-                                                      
-                                                          <div class="col-9">
-                                                              <input type="hour" class='form-control'
-                                                                      placeholder='Última actualizacion'
-                                                                      formControlName="hour">
-                                                          </div>
-                                                      </div>
-                                                  </div>
-                                              </div> -->
-                              <!--             <div class="col-5">
-                                                   <div class="form-group">
-                                                      <div class="row">
-                                                          <div class="col-9">
-                                                              <select type="text" class='form-control'>
-                                                                  <option disabled value="" selected disabled>selecciona hora</option>
-                                                                  <option value="1">1 hora</option>
-                                                                  <option value="2">2 horas</option>
-                                                                  <option value="3">3 horas</option>
-                                                                  <option value="4">4 horas</option>
-                                                              </select>
-                                                          </div>
-                                                      </div>
-                                                  </div>
-                                              </div>
-                                               -->
                             </div>
                             <div class="row">
                               <div class="col-5">
@@ -561,28 +533,6 @@
                                 </div>
                               </div>
                             </div>
-                            <!--         <div class="row">
-                                              <div class="col">
-                                                  <div class="form-group">
-                                                      <div class="row">
-                                                         
-                                                          <div class="col-10">
-                                                              <textarea type="text" class='form-control'
-                                                              placeholder="descripción"
-                                                              formControlName="description"></textarea>
-                                                          </div>
-                                                          <ng-container *ngIf="!description.valid && description.touched">
-                                                              <p *ngIf="description.errors.required" class="error-message">
-                                                                Es necesario llenar este campo
-                                                              </p>
-                                                              <p *ngIf="description.errors.minlength" class="error-message">
-                                                                Ingresa como mínimo 5 letras
-                                                              </p>
-                                                            </ng-container>
-                                                      </div>
-                                                  </div>
-                                              </div>
-                                          </div> -->
                             <div class="row">
                               <div class="col"></div>
                               <div class="col">
@@ -594,21 +544,27 @@
                                   Actualizar Incidencia
                                 </button>
                               </div>
-                              <!--   <div class="col">
-                                                  <button class='btn btn-light btn-block' (click)='closeModal()'>Cancelar</button>
-                                              </div> -->
                             </div>
                           </form>
                         </div>
                       </mat-step>
                       <mat-step label="Tareas">
-                        <p>You are now done.</p>
-                        <div>
-                          <button mat-button matStepperPrevious>Back</button>
-                          <button mat-button (click)="stepper.reset()">
-                            Reset
-                          </button>
-                        </div>
+                          <div class="row">
+                              <div class="col">
+                                  <h5>Lista de Tareas</h5>
+                              </div>
+                              <div class="col">
+                                  <h5>Agregar Tareaa</h5>
+                                  <div class="row">
+                                      <div class="col-7">
+                                          <input type="text" placeholder="ingresa tarea">
+                                      </div>
+                                      <div class="col-4">
+                                          <button class="btn btn-primary">agregar</button>
+                                      </div>
+                                  </div>
+                              </div>
+                          </div>
                       </mat-step>
                     </mat-horizontal-stepper>
                   </div>
@@ -661,5 +617,6 @@
         </mat-accordion>
       </div>
     </div>
-  </div>
+</div>
+<pagination-controls (pageChange)="p = $event"></pagination-controls>
 </div>
