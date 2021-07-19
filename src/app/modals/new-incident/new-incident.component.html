@@ -1,6 +1,6 @@
 <div style='width: 1000px;'>
     <div class='containerTitle'>
-        Nuevo Incidente
+        <p>Nuevo Incidente</p>
     </div>
     <div class='container-fluid formulario'>
         <form [formGroup]="incidenteForm" (ngSubmit)="saveInicident()" >
@@ -106,7 +106,7 @@
                             <div class='col-9'>
                                 <select type="text" class='form-control'
                                         formControlName="state">
-                                    <option value="null">Selecciona estado</option>
+                                    <option value="null">Abierta</option>
                                     <option value="abierta">Abierta</option>
                                     <option value="cerrada">Cerrada</option>
                                     <option value="cancelada">Cancelada</option>
@@ -199,9 +199,10 @@
                             </div>
                             <div class="col-9">
                                 <select type=text class='form-control'
-                                        formControlName="category">
+                                        formControlName="category"
+                                        (change)="getCategorieData($event)">
                                 <option value="null">Selecciona Categoria</option>
-                                <option [ngValue]="c" *ngFor='let c of categorias'>{{c.id}} </option>
+                                <option [ngValue]="c" *ngFor='let c of categorias'>{{c.name}} </option>
                                </select>
                                <ng-container *ngIf="!category.valid && category.touched">
                                 <p *ngIf="category.errors.required" class="error-message">
@@ -222,7 +223,7 @@
                                 <label for="">Fecha de vencimiento:</label>
                             </div>
                             <div class="col-9">
-                                <input type="date" class='form-control' formControlName="datend">
+                                <input type="text" class='form-control' formControlName="datend"  *ngIf="fechaDeVencimiento" value="{{fechaDeVencimiento}}">
                             </div>
                         </div>
                     </div>
@@ -235,14 +236,16 @@
                             </div>
                             <div class="col-9">
                                 <select type="text" class='form-control'
-                                        formControlName="subcategory">
+                                        formControlName="subcategory"
+                                        (change)="saveSubcategory($event)">
                                     <option value="Selecciona subcategoria"></option>
+                                    <option [ngValue]="s" *ngFor="let s of subcategory">{{s.name}}</option>
                                 </select>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="col-6">
+<!--                 <div class="col-6">
                     <div class="form-group">
                         <div class="row">
                             <div class="col-3">
@@ -254,7 +257,7 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> -->
                 <div class="col-6">
                      <div class="form-group">
                         <div class="row">
@@ -263,11 +266,7 @@
                             </div>
                             <div class="col-9">
                                 <select type="text" class='form-control'>
-                                    <option disabled value="null">selecciona hora</option>
-                                    <option value="1">1 hora</option>
-                                    <option value="2">2 horas</option>
-                                    <option value="3">3 horas</option>
-                                    <option value="4">4 horas</option>
+                                    <option *ngIf="minutos" value="{{minutos}} minutos">{{minutos}} minutos</option>
                                 </select>
                             </div>
                         </div>
@@ -277,18 +276,7 @@
             </div>
             <div class="row">
                 <div class="col">
-                    <div class="form-group">
-                        <div class="row">
-                            <div class="col-3">
-                                <label for="">Adjuntar documento:</label>
-                            </div>
-                            <div class="col-9">
-                                <input type="file" class='form-control' 
-                                        formControlName="document">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="form-group">
+                    <!-- <div class="form-group">
                         <div class="row">
                             <div class="col-3">
                                 <label for="">Asunto:</label>
@@ -298,7 +286,7 @@
                                         formControlName="affair">
                             </div>
                         </div>
-                    </div>
+                    </div> -->
                 </div>
                 <div class="col">
                     <div class="form-group">
@@ -307,8 +295,8 @@
                                 <label for="">Fecha de creacion:</label>
                             </div>
                             <div class="col-9">
-                                <input type="date" class='form-control'
-                                formControlName="hourCreate">
+                                <input type="text" class='form-control'
+                                formControlName="hourCreate" [(ngModel)]="fechaDeCreacion" *ngIf="fechaDeCreacion" value="{{fechaDeCreacion}}">
                             </div>
                         </div>
                     </div>
@@ -318,7 +306,7 @@
                                 <label for="">Hora de vencimiento:</label>
                             </div>
                             <div class="col-9">
-                                <input type="time" class='form-control'>
+                                <input class='form-control'  formControlName="hourVencimiento" *ngIf="finalizado" value="{{finalizado}}">
                             </div>
                         </div>
                     </div>
@@ -352,7 +340,7 @@
                     
                 </div>
                 <div class="col">
-                    <button class='btn btn-info btn-block' [disabled]="!incidenteForm.validate" type='submit'>Crear Incidencia</button>
+                    <button class='btn btn-info btn-block' [disabled]="!incidenteForm.valid" type='submit'>Crear Incidencia</button>
                 </div>
                 <div class="col">
                     <button class='btn btn-light btn-block' (click)='closeModal()'>Cancelar</button>

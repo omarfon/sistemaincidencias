@@ -28,6 +28,7 @@ import { SidebarUserComponent } from './share/sidebar-user/sidebar-user.componen
 import { ChartsModule, ThemeService } from 'ng2-charts';
 import { NewThemeComponent } from './modals/new-theme/new-theme.component';
 import {NgxPaginationModule} from 'ngx-pagination';
+import { ErrorLoginComponent } from './modals/error-login/error-login.component';
 
 
 @NgModule({
@@ -46,7 +47,8 @@ import {NgxPaginationModule} from 'ngx-pagination';
     CabeceraUserComponent,
     NewIncidentUserComponent,
     SidebarUserComponent,
-    NewThemeComponent
+    NewThemeComponent,
+    ErrorLoginComponent
   ],
   imports: [
     BrowserModule,
@@ -73,7 +75,8 @@ import {NgxPaginationModule} from 'ngx-pagination';
   entryComponents:[
     NewIncidentComponent,
     NewIncidentUserComponent,
-    NewThemeComponent
+    NewThemeComponent,
+    ErrorLoginComponent
   ]
 })
 export class AppModule { }

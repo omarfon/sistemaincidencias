@@ -1,7 +1,9 @@
 import { FnParam } from '@angular/compiler/src/output/output_ast';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
+import { MatDialog } from '@angular/material';
 import { Router } from '@angular/router';
+import { ErrorLoginComponent } from 'src/app/modals/error-login/error-login.component';
 import { AuthService } from 'src/app/service/auth.service';
 import { DatatecnicService } from 'src/app/service/datatecnic.service';
 
@@ -21,7 +23,8 @@ export class LoginComponent implements OnInit {
 
   constructor(public router: Router,
               public authSrv: AuthService,
-              public dateSrv: DatatecnicService) { }
+              public dateSrv: DatatecnicService,
+              public dialog: MatDialog) { }
 
   ngOnInit() {
     this.formLogin = this.loginForm()
@@ -46,9 +49,11 @@ export class LoginComponent implements OnInit {
         localStorage.setItem('user',JSON.stringify(resp.user));
         this.getDataTecnic();
         console.log(this.usuario);
-        this.loading = false;
+        
     }).catch(err =>{
+      this.dialog.open(ErrorLoginComponent)
       console.log(err);
+      this.loading = false;
     })
   }
 
@@ -57,6 +62,7 @@ export class LoginComponent implements OnInit {
       this.datatecnic = resp;
       localStorage.setItem('datatecnic', JSON.stringify(this.datatecnic[0]));
       this.router.navigate(['home']);
+      this.loading = false;
     });
   }
 

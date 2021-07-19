@@ -64,7 +64,6 @@
                   <div class="stats">
                     <h2 class="text-white">20</h2>
                     <h6 class="text-white">Tickets pendientes</h6>
-                    <!-- <button class="btn btn-rounded btn-outline btn-light m-t-10 font-14">Revisar</button> -->
                   </div>
                   <div class="stats-icon text-right ml-auto">
                     <i class="icon-eyeglass display-5 op-3 text-dark"></i>
@@ -78,15 +77,21 @@
       <div class="col-lg-8"></div>
     </div>
     <div class="containerfilter">
-       <div class="form-group">
-                                  <div class="row">
-                                    <div class="col-12">
-                                        <input type="text" class='form-control'
-                                        placeholder='Busca incidencia'
-                                        formControlName="hour">
-                                         </div>
-                                  </div>
-                                </div>
+      <div class="form-group">
+        <div class="row">
+          <div class="col-10">
+            <input
+              type="text"
+              class="form-control"
+              placeholder="Busca incidencia"
+              [(ngModel)]="incidencia"
+            />
+          </div>
+          <div class="col-2">
+            <button class="btn btn-primary" (click)="busquedaIncidencia()">Buscar</button>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
   <div class="container-fluid">
@@ -121,11 +126,15 @@
     <div class="row">
       <div class="col-12">
         <mat-accordion class="example-headers-align" multi *ngIf="incidencias">
-          <div class="card cardissue" *ngFor="let i of incidencias | paginate: { itemsPerPage: 10, currentPage: p }">
+          <div
+            class="card cardissue"
+            *ngFor="
+              let i of incidencias| paginate: { itemsPerPage: 10, currentPage: p }">
             <div class="card-body">
               <div class="row">
                 <div class="col-1">
-                  <p class="tituloUno">{{ i.data.date.seconds }}</p>
+                  <p class="tituloUno" *ngIf="i.data.hourCreate">{{ i.data.hourCreate }}</p>
+                  <p class="tituloUno" *ngIf="!i.data.hourCreate">{{ i.data.hourCreate }}</p>
                 </div>
                 <div class="col-2">
                   <p class="tituloUno">
@@ -153,7 +162,7 @@
                 </div>
                 <div class="col-1">
                   <p class="tituloUno">
-                    {{ i.data.date.seconds | date: "shortTime" }}
+                    {{ i.data.hourCreate | date: "shortTime" }}
                   </p>
                 </div>
                 <div class="col-1" *ngIf="i.data.state == 'abierta'">
@@ -172,11 +181,11 @@
                   </button>
                 </div>
               </div>
-              <mat-expansion-panel>
+              <mat-expansion-panel (click)="saveIncident(i)">
                 <mat-expansion-panel-header> </mat-expansion-panel-header>
                 <div class="row">
                   <div class="col-8">
-                    <mat-horizontal-stepper #stepper>
+                    <mat-horizontal-stepper #stepper >
                       <mat-step label="Descripcion">
                         <p>{{ i.data.description }}</p>
                       </mat-step>
@@ -190,9 +199,6 @@
                               <div class="col-5">
                                 <div class="form-group">
                                   <div class="row">
-                                    <!-- <div class="col-3">
-                                                              <label for="">Tipo de solicitud:</label>
-                                                          </div> -->
                                     <div class="col-11">
                                       <select
                                         type="text"
@@ -272,8 +278,7 @@
                                       <select
                                         type="text"
                                         class="form-control"
-                                        formControlName="mode"
-                                      >
+                                        formControlName="mode">
                                         <option value="" selected disabled>
                                           Modo
                                         </option>
@@ -411,22 +416,18 @@
                                         type="text"
                                         class="form-control"
                                         formControlName="category"
-                                      >
+                                        (change)="getCategorieData($event)">
                                         <option value="" selected disabled>
                                           Categoria
                                         </option>
                                         <option
-                                          [ngValue]="c"
-                                          *ngFor="let c of categorias"
-                                        >
-                                          {{ c.id }}
+                                          *ngFor="let c of categorias" [ngValue]="c">
+                                          {{ c.name }}
                                         </option>
                                       </select>
                                       <ng-container
                                         *ngIf="
-                                          !category.valid && category.touched
-                                        "
-                                      >
+                                          !category.valid && category.touched">
                                         <p
                                           *ngIf="category.errors.required"
                                           class="error-message"
@@ -466,13 +467,14 @@
                                         type="text"
                                         class="form-control"
                                         formControlName="subcategory"
-                                      >
+                                        (change)="saveSubcategory($event)">
                                         <option value="" selected disabled>
                                           Subcategoría
                                         </option>
                                         <option
-                                          value="Selecciona subcategoria"
-                                        ></option>
+                                        [ngValue]="s"
+                                          *ngFor="let s of subcategory"
+                                        >{{s.name}}</option>
                                       </select>
                                     </div>
                                   </div>
@@ -549,22 +551,30 @@
                         </div>
                       </mat-step>
                       <mat-step label="Tareas">
-                          <div class="row">
-                              <div class="col">
-                                  <h5>Lista de Tareas</h5>
-                              </div>
-                              <div class="col">
-                                  <h5>Agregar Tareaa</h5>
-                                  <div class="row">
-                                      <div class="col-7">
-                                          <input type="text" placeholder="ingresa tarea">
-                                      </div>
-                                      <div class="col-4">
-                                          <button class="btn btn-primary">agregar</button>
-                                      </div>
-                                  </div>
-                              </div>
+                        <div class="row">
+                          <div class="col">
+                            <h5>Lista de Tareas</h5>
+                            <ul>
+                              <li *ngFor="let t of tareas">{{t.name}}</li>
+                            </ul>
                           </div>
+                          <div class="col">
+                            <h5>Agregar Tarea</h5>
+                            <div class="row">
+                              <div class="col-7">
+                                <input
+                                  type="text"
+                                  placeholder="ingresa tarea"
+                                  ([ngModel])="tarea"
+                                />
+                              </div>
+                              <div class="col-4">
+                                <button class="btn btn-primary"
+                                (click)="saveTarea(i)">agregar</button>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
                       </mat-step>
                     </mat-horizontal-stepper>
                   </div>
@@ -617,6 +627,6 @@
         </mat-accordion>
       </div>
     </div>
-</div>
-<pagination-controls (pageChange)="p = $event"></pagination-controls>
+  </div>
+  <pagination-controls (pageChange)="p = $event"></pagination-controls>
 </div>
