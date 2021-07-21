@@ -153,7 +153,7 @@
                   </p>
                 </div>
                 <div class="col-2">
-                  <p class="tituloUno">{{ i.data.category.id }}</p>
+                  <p class="tituloUno">{{ i.data.category.name }}</p>
                 </div>
                 <div class="col-1">
                   <p class="tituloUno">
@@ -162,7 +162,7 @@
                 </div>
                 <div class="col-1">
                   <p class="tituloUno">
-                    {{ i.data.hourCreate | date: "shortTime" }}
+                    {{ i.data.hourCreate }}
                   </p>
                 </div>
                 <div class="col-1" *ngIf="i.data.state == 'abierta'">
@@ -170,11 +170,11 @@
                     {{ i.data.state }}
                   </button>
                 </div>
-                <div class="col-1" *ngIf="i.data.state == 'pendiente'">
+ <!--                <div class="col-1" *ngIf="i.data.state == 'pendiente'">
                   <button class="btn btn-info btn-rounded btn-xs">
                     {{ i.data.state }}
                   </button>
-                </div>
+                </div> -->
                 <div class="col-1" *ngIf="i.data.state == 'cerrada'">
                   <button class="btn btn-warning btn-rounded btn-xs">
                     {{ i.data.state }}

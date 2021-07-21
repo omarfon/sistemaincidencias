@@ -27,6 +27,7 @@ export class NewIncidentComponent implements OnInit {
   public fechaDeVencimiento;
   public fechaDeCreacion;
   public affair = "";
+  public hourCreate;
   constructor(public data: DatanormalService, 
     public createSrv:CreateincidentService,
     public dialogref: MatDialogRef<NewIncidentComponent>) { }
@@ -69,20 +70,32 @@ export class NewIncidentComponent implements OnInit {
     return this.incidenteForm.get('mode')
   }
 
+  get solicitante(){
+    return this.incidenteForm.get('solicitante')
+  }
+
   get state(){
     return this.incidenteForm.get('state')
+  }
+
+  get urgency(){
+    return this.incidenteForm.get('urgency')
   }
 
   get tecnic(){
     return this.incidenteForm.get('tecnic')
   }
 
+  get priority(){
+    return this.incidenteForm.get('priority')
+  }
+
   get category(){
     return this.incidenteForm.get('category')
   }
 
-  get solicitante(){
-    return this.incidenteForm.get('solicitante')
+  get datend(){
+    return this.incidenteForm.get('datend')
   }
 
   get description(){
@@ -95,17 +108,20 @@ export class NewIncidentComponent implements OnInit {
     console.log('datos:', datos);
     datos.datend= this.fechaDeVencimiento;
     datos.hourVencimiento = this.finalizado;
+    datos.impact = this.incidenteForm.value.impact
     datos.tecnic = this.incidenteForm.value.tecnic;
+    datos.urgency = this.incidenteForm.value.urgency
     datos.sla = this.minutos;
     console.log('datos',datos);
+    datos.hourCreate = this.hourCreate; 
       this.createSrv.createNewIncident(datos).then(resp =>{
         console.log(datos,resp);
-        this.dialogref.close();
         Swal.fire('Data Guardada...', 'Listo... acabas de guardar una nueva incidencia!', 'success');
       }).catch(err =>{
         Swal.fire('Data No guardada...', 'Error... No se ha podido guardar esta inicidencia!', 'error');
         console.log(err)
       })
+      this.dialogref.close();
   }
 
 
@@ -147,7 +163,7 @@ export class NewIncidentComponent implements OnInit {
     const sla = event.target.selectedOptions[0].textContent.trim();
     this.sla = this._subcategory.filter(x => x.name === sla);
     this.minutos = this.sla[0].subnivel[0].sla;
-    const actual = moment().hour;
+    this.hourCreate = moment().format('h:mm A');
     this.finalizado = moment().add(this.minutos, 'minutes').format('h:mm A');
     this.fechaDeCreacion = moment().format('dddd D MMMM')
     this.fechaDeVencimiento = moment().add(this.minutos, 'minutes').format('dddd D MMMM')

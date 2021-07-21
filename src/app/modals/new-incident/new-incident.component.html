@@ -39,10 +39,10 @@
                                 <select type="text" class='form-control'
                                         formControlName="impact">
                                     <option value="null">Selecciona  Impacto</option>
-                                    <option value="abierta">Afecta negocio</option>
-                                    <option value="abierta">Afecta Departamento</option>
-                                    <option value="abierta">Afecta Grupo</option>
-                                    <option value="abierta">Afecta a usuario</option>
+                                    <option value="Afecta negocio">Afecta negocio</option>
+                                    <option value="Afecta departamento">Afecta Departamento</option>
+                                    <option value="Afecta Grupo">Afecta Grupo</option>
+                                    <option value="Afecta usuario">Afecta a usuario</option>
                                 </select>
                                 <ng-container *ngIf="!impact.valid && impact.touched">
                                     <p *ngIf="impact.errors.required" class="error-message">
@@ -63,9 +63,9 @@
                                 <select type="text" class='form-control'
                                         formControlName="mode">
                                     <option value="null">Seleccionar modo</option>
-                                    <option value="incidente">Email</option>
-                                    <option value="requeimientoinfo">Telefono</option>
-                                    <option value="requirimientoservicio">Formulario web</option>
+                                    <option value="email">Email</option>
+                                    <option value="telefono">Telefono</option>
+                                    <option value="formulario_web">Formulario web</option>
                                 </select>
                                 <ng-container *ngIf="!mode.valid && mode.touched">
                                     <p *ngIf="mode.errors.required" class="error-message">
@@ -126,10 +126,10 @@
                                 <select type="text" class='form-control'
                                         formControlName="urgency">
                                     <option value="null">Selecciona Urgencia</option>
-                                    <option value="abierta">Alta</option>
-                                    <option value="abierta">Baja</option>
-                                    <option value="abierta">Normal</option>
-                                    <option value="abierta">Urgente</option>
+                                    <option value="alta">Alta</option>
+                                    <option value="baja">Baja</option>
+                                    <option value="normal">Normal</option>
+                                    <option value="urgente">Urgente</option>
                                 </select>
                             </div>
                         </div>
