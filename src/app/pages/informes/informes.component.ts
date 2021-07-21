@@ -1,75 +1,42 @@
 import { Component, OnInit } from '@angular/core';
 import { IncidentsService } from 'src/app/service/incidents.service';
+import {MatTableDataSource} from '@angular/material/table';
+
+export interface PeriodicElement {
+  name: string;
+  position: number;
+  weight: number;
+  symbol: string;
+}
+
+const ELEMENT_DATA: PeriodicElement[] = [
+  {position: 1, name: 'Hydrogen', weight: 1.0079, symbol: 'H'},
+  {position: 2, name: 'Helium', weight: 4.0026, symbol: 'He'},
+  {position: 3, name: 'Lithium', weight: 6.941, symbol: 'Li'},
+  {position: 4, name: 'Beryllium', weight: 9.0122, symbol: 'Be'},
+  {position: 5, name: 'Boron', weight: 10.811, symbol: 'B'},
+  {position: 6, name: 'Carbon', weight: 12.0107, symbol: 'C'},
+  {position: 7, name: 'Nitrogen', weight: 14.0067, symbol: 'N'},
+  {position: 8, name: 'Oxygen', weight: 15.9994, symbol: 'O'},
+  {position: 9, name: 'Fluorine', weight: 18.9984, symbol: 'F'},
+  {position: 10, name: 'Neon', weight: 20.1797, symbol: 'Ne'},
+];
 
 @Component({
   selector: 'app-informes',
   templateUrl: './informes.component.html',
   styleUrls: ['./informes.component.scss']
 })
+
+
 export class InformesComponent implements OnInit {
+  displayedColumns: string[] = ['position', 'name', 'weight', 'symbol'];
+  dataSource = new MatTableDataSource(ELEMENT_DATA);
   public totalIncidents;
-  public barChartOptions:any = {
-    scaleShowVerticalLines: true,
-    responsive: true,
-    fill: false
-};
-  public barChartLabels:string[] = ['mes 0','mes 1', 'mes 2', 'mes 3', 'mes 4', 'mes 5', 'mes 6', 'mes 7', 'mes 8', 'mes 9', 'mes 10', 'mes 11', 'mes 12', 'mes 13', 'mes 14', 'mes 15','mes 16', 'mes 17'];
-  public barChartLabelsDays:string[] = ['1','2', '3', '4', '5', '6', '7', '8','9', '10', '11', '12', '13', '14', '15','16', '17','18', '19', '20', '21', '22', '23', '24', '25', '26', '27', '28', '29', '30'];
-  public barChartDataPeso:any[] = [];
-  public lineChartType:string = 'line';
-  public barChartLegend:boolean = true; 
-  public barChartColorsPeso = [
-   { // roja
-     backgroundColor: 'transparent',
-     borderColor: '#f14668',
-     pointHoverBackgroundColor: '#fff',
-     pointHoverBorderColor: 'rgba(148,159,177,0.3)',
-     borderDash: [4,1],
-     pointBorderWidth: .4,
-     /* borderDashOffset: 2, */
-   },
-   { // naranja
-     backgroundColor: 'transparent',
-     borderColor: '#f5c0c0',
-     borderDash: [4,2],
-     pointBorderWidth: .4,
-   },
-   { // amarilla
-     backgroundColor: 'transparent',
-     borderColor: '#fff9b0',
-     borderDash: [4,2],
-     pointBorderWidth: .4,
-   },
-   { // verde
-     backgroundColor: 'transparent',
-     borderColor: '#6ddccf',
-     borderDash: [4,2],
-     pointBorderWidth: .4,
-   },
-   { // azul
-     backgroundColor: 'transparent',
-     borderColor: '#9ab3f5',
-     borderDash: [4,2],
-     pointBorderWidth: .4,
-   },
-   { // principal
-     backgroundColor: 'rgba(15,48,87,0.5)', 
-     borderColor: '#0f3057',
-     pointBorderWidth: .4,
-   },
- ];
-
-  // events
-  public chartClicked(e:any):void {
-    console.log(e);
-  }
-
-  public chartHovered(e:any):void {
-    console.log(e);
-  }
-
-  public randomize():void {
-    this.lineChartType = this.lineChartType === 'line' ? 'bar' : 'line';
+  
+  applyFilter(event: Event) {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.dataSource.filter = filterValue.trim().toLowerCase();
   }
 
   constructor(public incidentsSrv: IncidentsService) { }
@@ -84,8 +51,7 @@ export class InformesComponent implements OnInit {
       console.log(data);
       this.totalIncidents = data.length;
       console.log(this.totalIncidents)
-      this.barChartDataPeso = [{data: [this.totalIncidents], label:'Incidencias'}] 
-      console.log('data peso:',this.barChartDataPeso);
+
     })
   }
 }

@@ -129,7 +129,7 @@
           <div
             class="card cardissue"
             *ngFor="
-              let i of incidencias| paginate: { itemsPerPage: 10, currentPage: p }">
+              let i of incidencias| paginate: { itemsPerPage: 6, currentPage: p }">
             <div class="card-body">
               <div class="row">
                 <div class="col-1">
@@ -196,16 +196,16 @@
                             (ngSubmit)="saveInicident()"
                           >
                             <div class="row">
-                              <div class="col-5">
+                              <div class="col-5" *ngIf="typeUser === 'admin'">
                                 <div class="form-group">
                                   <div class="row">
-                                    <div class="col-11">
+                                    <div class="col-11" >
                                       <select
                                         type="text"
                                         class="form-control"
                                         formControlName="type"
                                       >
-                                        <option value="" selected disabled>
+                                        <option value="{{i.type}}" selected disabled>
                                           Tipo de solicitud
                                         </option>
                                         <option value="incidente">
@@ -232,7 +232,23 @@
                                   </div>
                                 </div>
                               </div>
-                              <div class="col-5">
+                              <div class="col-5" *ngIf="typeUser === 'tecnic'">
+                                <div class="form-group" >
+                                  <div class="row">
+                                    <div class="col-11">
+                                      <input
+                                        type="text"
+                                        class="form-control"
+                                        placeholder="{{i.data.type}}"
+                                        formControlName="affair"
+                                        disabled
+                                      />
+                                    </div>
+                                  </div>
+                                </div>
+
+                              </div>
+                              <div class="col-5" *ngIf="typeUser === 'admin'">
                                 <div class="form-group">
                                   <div class="row">
                                     <div class="col-11">
@@ -271,7 +287,22 @@
                                   </div>
                                 </div>
                               </div>
-                              <div class="col-5">
+                              <div class="col-5" *ngIf="typeUser === 'tecnic'">
+                                <div class="form-group" >
+                                  <div class="row">
+                                    <div class="col-11">
+                                      <input
+                                        type="text"
+                                        class="form-control"
+                                        placeholder="{{i.data.impact}}"
+                                        formControlName="affair"
+                                        disabled
+                                      />
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="col-5" *ngIf="typeUser === 'admin'">
                                 <div class="form-group">
                                   <div class="row">
                                     <div class="col-11">
@@ -304,6 +335,21 @@
                                   </div>
                                 </div>
                               </div>
+                              <div class="col-5" *ngIf="typeUser === 'tecnic'">
+                                <div class="form-group" >
+                                  <div class="row">
+                                    <div class="col-11">
+                                      <input
+                                        type="text"
+                                        class="form-control"
+                                        placeholder="{{i.data.mode}}"
+                                        formControlName="affair"
+                                        disabled
+                                      />
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
                               <div class="col-5">
                                 <div class="form-group">
                                   <div class="row">
@@ -326,7 +372,7 @@
                                   </div>
                                 </div>
                               </div>
-                              <div class="col-5">
+                              <div class="col-5" *ngIf="typeUser === 'admin'">
                                 <div class="form-group">
                                   <div class="row">
                                     <div class="col-11">
@@ -347,6 +393,21 @@
                                   </div>
                                 </div>
                               </div>
+                              <div class="col-5" *ngIf="typeUser == 'tecnic'">
+                                <div class="form-group" >
+                                  <div class="row">
+                                    <div class="col-11">
+                                      <input
+                                        type="text"
+                                        class="form-control"
+                                        placeholder="{{i.data.urgency}}"
+                                        formControlName="affair"
+                                        disabled
+                                      />
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
                               <div class="col-5">
                                 <div class="form-group">
                                   <div class="row">
@@ -357,7 +418,7 @@
                                         formControlName="tecnic"
                                         [(ngModel)]="tecnico"
                                       >
-                                        <option value="" selected disabled>
+                                        <option value="" selected >
                                           Técnico
                                         </option>
                                         <option
@@ -387,7 +448,7 @@
                                   </div>
                                 </div>
                               </div>
-                              <div class="col-5">
+                              <div class="col-5" *ngIf="typeUser === 'admin'">
                                 <div class="form-group">
                                   <div class="row">
                                     <div class="col-11">
@@ -408,6 +469,21 @@
                                   </div>
                                 </div>
                               </div>
+                              <div class="col-5" *ngIf="typeUser === 'tecnic'">
+                                <div class="form-group" >
+                                  <div class="row">
+                                    <div class="col-11">
+                                      <input
+                                        type="text"
+                                        class="form-control"
+                                        placeholder="{{i.data.priority}}"
+                                        formControlName="affair"
+                                        disabled
+                                      />
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
                               <div class="col-5">
                                 <div class="form-group">
                                   <div class="row">
@@ -417,9 +493,7 @@
                                         class="form-control"
                                         formControlName="category"
                                         (change)="getCategorieData($event)">
-                                        <option value="" selected disabled>
-                                          Categoria
-                                        </option>
+                                        <option value="">Selecciona Categoria</option>
                                         <option
                                           *ngFor="let c of categorias" [ngValue]="c">
                                           {{ c.name }}
@@ -513,10 +587,11 @@
                                   <div class="row">
                                     <div class="col-11">
                                       <input
-                                        type="date"
+                                        type="text"
                                         class="form-control"
-                                        placeholder="Fecha de creación"
+                                        disabled
                                         formControlName="hourCreate"
+                                        [(ngModel)]="fechaDeCreacion" *ngIf="fechaDeCreacion" value="{{fechaDeCreacion}}"
                                       />
                                     </div>
                                   </div>
@@ -526,9 +601,10 @@
                                   <div class="row">
                                     <div class="col-11">
                                       <input
-                                        type="time"
+                                        type="text"
                                         class="form-control"
-                                        placeholder="Hora de vencimmiento"
+                                        disabled
+                                        formControlName="hourVencimiento" *ngIf="finalizado" value="{{finalizado}}"
                                       />
                                     </div>
                                   </div>

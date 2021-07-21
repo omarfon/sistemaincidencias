@@ -46,10 +46,11 @@ export class LoginComponent implements OnInit {
     const datos = this.formLogin.value;
     this.authSrv.sigIn(datos.user, datos.password).then(resp =>{
       this.usuario = resp;
-        localStorage.setItem('user',JSON.stringify(resp.user));
+      console.log(this.usuario);
+      localStorage.setItem('user',JSON.stringify(resp.user));
+      if(localStorage.getItem('user')){
         this.getDataTecnic();
-        console.log(this.usuario);
-        
+      }
     }).catch(err =>{
       this.dialog.open(ErrorLoginComponent)
       console.log(err);
@@ -60,7 +61,9 @@ export class LoginComponent implements OnInit {
   getDataTecnic(){
     this.dateSrv.getDataTecnic().subscribe(resp =>{
       this.datatecnic = resp;
+      console.log(this.datatecnic);
       localStorage.setItem('datatecnic', JSON.stringify(this.datatecnic[0]));
+      localStorage.setItem('type', JSON.stringify(this.datatecnic[0].type));
       this.router.navigate(['home']);
       this.loading = false;
     });
@@ -71,6 +74,7 @@ export class LoginComponent implements OnInit {
       this.dataUser = resp;
       console.log(this.dataUser);
       localStorage.setItem('dataUser', JSON.stringify(this.dataUser[0]));
+      
       if(resp){
         this.router.navigate(['usuario']);
       }

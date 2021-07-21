@@ -5,6 +5,7 @@ import { CreateincidentService } from 'src/app/service/createincident.service';
 import { DatanormalService } from 'src/app/service/datanormal.service';
 import { IncidentsService } from 'src/app/service/incidents.service';
 import Swal from 'sweetalert2'
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-home',
@@ -29,6 +30,11 @@ export class HomeComponent implements OnInit {
   public tarea;
   public tareas;
   public sla;
+  public typeUser;
+  public fechaDeCreacion;
+  public finalizado;
+  public fechaDeVencimiento;
+  public minutos;
 
   constructor(public incidentSrv: IncidentsService,
               public data: DatanormalService,
@@ -37,12 +43,17 @@ export class HomeComponent implements OnInit {
                 this.getAllIncidents();
                 this.GetAllCategories();
                 this.incidenteForm = this.createForm();
+                if(localStorage.getItem('type')){
+                  const typeUser = JSON.parse(localStorage.getItem('type'));
+                  this.typeUser = typeUser;
+                  console.log(this.typeUser); 
+                }
                }
 
             
   ngOnInit() {
-    /* console.log(this.tecnic); */
     this.getAllIncidents();
+    
   }
 
   getAllIncidents(){
@@ -63,26 +74,30 @@ export class HomeComponent implements OnInit {
       }
   }
 
-  createForm(){
-    return new FormGroup({
-      type: new FormControl('', [Validators.required]),
-      impact: new FormControl('', [Validators.required]),
-      mode: new FormControl('', [Validators.required]),
-      solicitante: new FormControl('', [Validators.required]),
-      state: new FormControl('', [Validators.required]),
-      urgency: new FormControl(''),
-      tecnic: new FormControl('', [Validators.required]),
-      priority: new FormControl(''),
-      category: new FormControl('', [Validators.required]),
-      datend: new FormControl(''),
-      subcategory: new FormControl(''),
-      hour: new FormControl(''),
-      document: new FormControl(''),
-      affair: new FormControl(''),
-      hourCreate: new FormControl(''),
-      description: new FormControl('', [Validators.required]),
-    })
+  
+    createForm(){
+     
+        return new FormGroup({
+          type: new FormControl(''),
+          impact: new FormControl(''),
+          mode: new FormControl(''),
+          solicitante: new FormControl(''),
+          state: new FormControl(''),
+          urgency: new FormControl(''),
+          tecnic: new FormControl('', [Validators.required]),
+          priority: new FormControl(''),
+          category: new FormControl('', [Validators.required]),
+          datend: new FormControl(''),
+          subcategory: new FormControl(''),
+          hour: new FormControl(''),
+          document: new FormControl(''),
+          affair: new FormControl(''),
+          hourCreate: new FormControl(''),
+          description: new FormControl(''),
+        })
   }
+
+  
 
   get type(){
     return this.incidenteForm.get('type')
@@ -153,19 +168,25 @@ export class HomeComponent implements OnInit {
 
   saveSubcategory(event){
     const sla = event.target.selectedOptions[0].textContent.trim();
-   /*  console.log(sla); */
     this.sla = this._subcategory.filter(x => x.name === sla);
-   /*  console.log(this.sla); */
+    this.minutos = this.sla[0].subnivel[0].sla;
+    const actual = moment().hour;
+    this.finalizado = moment().add(this.minutos, 'minutes').format('h:mm A');
+    this.fechaDeCreacion = moment().format('dddd D MMMM')
+    this.fechaDeVencimiento = moment().add(this.minutos, 'minutes').format('dddd D MMMM')
+    console.log(this.finalizado, this.fechaDeVencimiento);
   }
 
   saveInicident(){
     let datos = this.incidenteForm.value;
     datos.tecnic = this.incidenteForm.value.tecnic;
-    datos.create = new Date();
-    datos.sla = this.sla.subnivel[0].sla;
+    datos.datend= this.fechaDeVencimiento;
+    datos.hourVencimiento = this.finalizado;
+    datos.tecnic = this.incidenteForm.value.tecnic;
+    datos.sla = this.minutos;
       this.createInSrv.updateInciden(this.incidente, datos).then(resp =>{
         console.log(resp);
-        Swal.fire('Data Guardada...', 'Listo... acabas de actualizar una nueva incidencia!', 'success');
+        Swal.fire('Data Actualizada...', 'Listo... acabas de actualizar una nueva incidencia!', 'success');
       }).catch(err =>{
         Swal.fire('Data No guardada...', 'Error... No se ha podido actualizar esta inicidencia!', 'error');
         console.log(err)

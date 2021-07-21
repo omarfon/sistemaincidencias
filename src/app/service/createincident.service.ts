@@ -11,6 +11,7 @@ export class CreateincidentService {
   constructor(public afs:AngularFirestore) { }
 
   createNewIncident(data){
+    console.log(data);
     return this.afs.collection('incidencias').doc().set({
       data
     }, {merge:true})

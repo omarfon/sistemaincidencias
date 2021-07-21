@@ -30,6 +30,9 @@ import { NewThemeComponent } from './modals/new-theme/new-theme.component';
 import {NgxPaginationModule} from 'ngx-pagination';
 import { ErrorLoginComponent } from './modals/error-login/error-login.component';
 
+import {MatTableModule} from '@angular/material/table';
+import { MatTableExporterModule } from 'mat-table-exporter';
+
 
 @NgModule({
   declarations: [
@@ -64,11 +67,13 @@ import { ErrorLoginComponent } from './modals/error-login/error-login.component'
     MatExpansionModule,
     MatInputModule,
     MatIconModule,
+    MatTableModule,
     MatDatepickerModule,
     MatFormFieldModule,
     MatProgressSpinnerModule,
     MatStepperModule,
-    NgxPaginationModule
+    NgxPaginationModule,
+    MatTableExporterModule
   ],
   providers: [ThemeService],
   bootstrap: [AppComponent],
